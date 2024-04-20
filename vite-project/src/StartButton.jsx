@@ -22,26 +22,7 @@ export default function StartButton() {
   return (
     <div>
       <form>
-        <label htmlFor="cameraInput" style={{ marginRight: 20 }}>
-          Take Photo:
-          <input
-            type="file"
-            accept="image/*"
-            capture="environment"
-            id="cameraInput"
-            style={{ display: "none" }}
-            onChange={handleImageChange}
-          />
-          <button
-            type="button"
-            onClick={() => document.getElementById("cameraInput").click()}
-          >
-            Camera
-          </button>
-        </label>
-
         <label htmlFor="libraryInput">
-          Upload from Library:
           <input
             type="file"
             accept="image/*"
@@ -51,9 +32,10 @@ export default function StartButton() {
           />
           <button
             type="button"
+            className="takePhotoButton"
             onClick={() => document.getElementById("libraryInput").click()}
           >
-            Library
+            Take Photo
           </button>
         </label>
 
