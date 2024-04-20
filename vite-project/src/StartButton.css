@@ -1,0 +1,19 @@
+.takePhotoButton {
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1.15em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #3b60c4;
+  cursor: pointer;
+  width: 430px;
+  transition: 0.3s;
+  border: 0px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.takePhotoButton:hover {
+  background-color: #233770;
+}

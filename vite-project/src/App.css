@@ -1,31 +1,63 @@
 #root {
-  max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  height: 100%;
+  overflow-y: hidden;
 }
 
+.column {
+  display: flex;
+  flex-direction: column;
+  height: 90vh;
+  justify-content: space-between;
+  width: 100v;
+  overflow-y: hidden;
+
+}
+.logo-row {
+  display: flex;
+  font-size: 7px;
+  justify-content: center;
+}
+/*  */
+.logo-row img {
+  min-width:40px;
+  min-height: 40px;
+  align-self: center;
+}
+
+.slogan-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.slogan-column h2 {
+  font-size: 70px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.slogan-column  h3 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 50px;
+  max-width: 200;
+  font-weight: 600;
+
+}
 .logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+  width: 4em;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.startButton-center {
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
