@@ -1,0 +1,14 @@
+.cursor {
+    font-weight: bold;
+    color: #3B60C4; /* Change the cursor color to blue */
+  }
+    
+    .blinking {
+      animation: blink-animation 1s steps(1, start) infinite;
+    }
+    
+    @keyframes blink-animation {
+      50% {
+        opacity: 0;
+      }
+    }
