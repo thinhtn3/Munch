@@ -28,6 +28,7 @@ export default function StartButton() {
           },
         }
       );
+        window.location.href = "/result";
 
       console.log(response.data); // Handle the response from the server here
     } catch (error) {
