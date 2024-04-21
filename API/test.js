@@ -91,7 +91,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   console.log("Uploaded file:", req.file.path);
   const filePath = req.file.path;
 
-  if (req.file.mimetype === "image/heic") {
+  if (req.file.mimetype === "image/heic" ||req.file.mimetype === "image/heif" ) {
     await sharp(filePath).jpeg().toFile(outputFilePath); // Save the converted image
     console.log("File converted to JPEG");
   } else {
@@ -106,6 +106,6 @@ app.get("/fetch", async (req, res) => {
   res.json(businesses);
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, '192.168.68.79', () => {
   console.log(`App listening on ${process.env.PORT}`);
 });
