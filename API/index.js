@@ -6,16 +6,28 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 const express = require("express");
 const axios = require("axios");
 const app = express();
+const multer = require("multer");
 let jsonData = "";
 let location = "";
 
-const run = async () => {
+// Configure storage for multer
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/"); // Ensure the directory exists
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname); // Save with the original file name
+  },
+});
+const upload = multer({ storage: storage });
+
+const run = async (filePath) => {
   try {
     const prompt =
       "return in JSON without markdown syntax, the food_name, and cuisine type, based on the image provided";
 
     // Read the image file and convert it to Base64
-    const imageBuffer = fs.readFileSync("food.jpg");
+    const imageBuffer = fs.readFileSync(filePath);
     const imageData = imageBuffer.toString("base64");
 
     // Construct the image object
@@ -32,21 +44,30 @@ const run = async () => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
+    console.log(jsonData);
     return jsonData;
   } catch (error) {
     console.error("An error occurred:", error);
   }
 };
 
-app.get("/findRestaurant", async (req, res) => {
-  jsonData = await run();
+app.post("/upload", upload.single("file"), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+  console.log("Uploaded file:", req.file.path);
+  const filePath = req.file.path;
+  jsonData = await run(filePath);
   const config = {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`, // Replace 'YOUR_ACCESS_TOKEN' with your actual Yelp API token
       "Content-Type": "application/json",
     },
   };
+  res.redirect('/findRestaurant')
+});
 
+app.get("/findRestaurant", async (req, res) => {
   const response = await axios.get(
     `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
     config
@@ -64,6 +85,7 @@ app.get("/findRestaurant", async (req, res) => {
       phone_number: business.display_phone,
     };
   });
+  console.log(businesses);
   res.json(businesses);
 });
 

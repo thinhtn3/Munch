@@ -6,29 +6,20 @@ const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
 const express = require("express");
 const axios = require("axios");
 const app = express();
-const multer =require('multer')
+const multer = require("multer");
 let jsonData = "";
 let location = "";
 
 // Configure storage for multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'uploads/')  // Ensure the directory exists
+    cb(null, "uploads/"); // Ensure the directory exists
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname)  // Save with the original file name
-  }
+    cb(null, file.originalname); // Save with the original file name
+  },
 });
 const upload = multer({ storage: storage });
-
-app.post('/upload', upload.single('file'), (req, res) => {
-  if (!req.file) {
-    return res.status(400).send('No file uploaded.');
-  }
-  console.log('Uploaded file:', req.file.path);
-  res.send({ message: 'File successfully uploaded.', filePath: req.file.path });
-});
-
 
 const run = async (filePath) => {
   try {
@@ -36,7 +27,7 @@ const run = async (filePath) => {
       "return in JSON without markdown syntax, the food_name, and cuisine type, based on the image provided";
 
     // Read the image file and convert it to Base64
-    const imageBuffer = fs.readFileSync("food.jpg");
+    const imageBuffer = fs.readFileSync(filePath);
     const imageData = imageBuffer.toString("base64");
 
     // Construct the image object
@@ -53,26 +44,32 @@ const run = async (filePath) => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
-    return jsonData;
+    console.log("47");
+    console.log(jsonData);
   } catch (error) {
     console.error("An error occurred:", error);
   }
 };
 
-app.get("/findRestaurant", async (req, res) => {
-  jsonData = await run();
+app.post("/upload", upload.single("file"), async (req, res) => {
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+  console.log("Uploaded file:", req.file.path);
+  const filePath = req.file.path;
+  jsonData = await run(filePath);
   const config = {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`, // Replace 'YOUR_ACCESS_TOKEN' with your actual Yelp API token
       "Content-Type": "application/json",
     },
   };
-
-  const response = await axios.get(
+  console.log(jsonData.cuisine_type)
+  const resp = await axios.get(
     `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
     config
   );
-  const businesses = response.data.businesses.map((business) => {
+  const businesses = resp.data.businesses.map((business) => {
     return {
       id: business.id,
       name: business.name,
@@ -87,6 +84,28 @@ app.get("/findRestaurant", async (req, res) => {
   });
   res.json(businesses);
 });
+
+// app.get("/findRestaurant", async (req, res) => {
+//   const response = await axios.get(
+//     `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
+//     config
+//   );
+//   const businesses = response.data.businesses.map((business) => {
+//     return {
+//       id: business.id,
+//       name: business.name,
+//       location: business.location.address1,
+//       reviews: business.review_count,
+//       rating: business.rating,
+//       url: business.url,
+//       is_closed: business.is_closed,
+//       image_url: business.image_url,
+//       phone_number: business.display_phone,
+//     };
+//   });
+//   console.log(businesses);
+//   res.json(businesses);
+// });
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on ${process.env.PORT}`);
