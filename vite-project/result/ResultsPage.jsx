@@ -22,6 +22,7 @@ function ResultsPage() {
   return (
     <div style={{display:"flex", flexDirection:"column", justifyContent:"center", width:"90vw"}}>
       <h1 style={{color:'white'}}>Restaurant Results</h1>
+      <a className= "anchor"style={{color:'white', textDecoration:'none', fontSize:'20px'}}href="/">PRESS TO GO BACK</a>
       {places.map((p) => {
         return <RestaurantCard key={p.id} {...p}/>
       })}

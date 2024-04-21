@@ -4,7 +4,11 @@ import "./RestaurantCard.css";
 export default function RestaurantCard({
   id,
   name,
-  location,
+  address1,
+  city,
+  state,
+  zip_code,
+  country,
   reviews,
   rating,
   url,
@@ -47,8 +51,10 @@ export default function RestaurantCard({
           <img src={image_url} alt={name} />
           <div className="text-column">
             <h1>{name}</h1>
-            <p>{location}</p>
-            <p>{phone_number}</p>
+            <p>{address1},</p>
+            <p>{city}, {state} {zip_code}</p>
+            <p>{country}</p>
+            <p style={{textDecoration:'underline'}}>{phone_number}</p>
           </div>
         </div>
         <span>

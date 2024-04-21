@@ -68,7 +68,11 @@ const run = async (filePath) => {
       return {
         id: business.id,
         name: business.name,
-        location: business.location.address1,
+        address1: business.location.address1,
+        city: business.location.city,
+        state: business.location.state,
+        zip_code: business.location.zip_code,
+        country: business.location.country,
         reviews: business.review_count,
         rating: business.rating,
         url: business.url,
@@ -88,16 +92,21 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   if (!req.file) {
     return res.status(400).send("No file uploaded.");
   }
-  console.log("Uploaded file:", req.file.path);
-  const filePath = req.file.path;
 
-  if (req.file.mimetype === "image/heic" ||req.file.mimetype === "image/heif" ) {
-    await sharp(filePath).jpeg().toFile(outputFilePath); // Save the converted image
+  const filePath = req.file.path;
+  let outputFilePath; // Declare this variable to hold the path of the processed image
+
+  if (
+    req.file.mimetype === "image/heic" ||
+    req.file.mimetype === "image/heif"
+  ) {
+    outputFilePath = filePath.replace(/\.(heic|heif)$/i, ".jpeg"); // Define output file path
+    await sharp(filePath).jpeg().toFile(outputFilePath); // Convert and save the image
     console.log("File converted to JPEG");
   } else {
-    outputFilePath = filePath; // No conversion needed, use original file
+    outputFilePath = filePath; // No conversion needed, use the original file
   }
-  jsonData = await run(filePath);
+  jsonData = await run(outputFilePath);
   console.log(businesses, "91");
   // res.json(businesses)
 });
