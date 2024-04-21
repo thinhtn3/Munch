@@ -1,27 +1,43 @@
-import "./StartButton.css";
 import React, { useState } from "react";
+import axios from "axios";
+import "./StartButton.css";
 
 export default function StartButton() {
-  const [imagePreviewUrl, setImagePreviewUrl] = useState("");
+  const [imageFile, setImageFile] = useState(null);
 
   const handleImageChange = (e) => {
     e.preventDefault();
-
-    let reader = new FileReader();
     let file = e.target.files[0];
-
-    reader.onloadend = () => {
-      setImagePreviewUrl(reader.result);
-    };
-
     if (file) {
-      reader.readAsDataURL(file);
+      console.log(e.target.files);
+      setImageFile(file);
+    }
+  };
+
+  const uploadImage = async () => {
+    const formData = new FormData();
+    formData.append("file", imageFile);
+
+    try {
+      const response = await axios.post(
+        "http://localhost:8080/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log(response.data); // Handle the response from the server here
+    } catch (error) {
+      console.error("Error uploading image:", error);
     }
   };
 
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="libraryInput">
           <input
             type="file"
@@ -39,12 +55,17 @@ export default function StartButton() {
           </button>
         </label>
 
-        {imagePreviewUrl && (
-          <img
-            src={imagePreviewUrl}
-            alt="Preview"
-            style={{ width: "100%", height: "auto" }}
-          />
+        {imageFile && (
+          <div>
+            <img
+              src={URL.createObjectURL(imageFile)}
+              alt="Preview"
+              style={{ width: "100%", height: "auto" }}
+            />
+            <button type="button" onClick={uploadImage}>
+              Analyze Photo
+            </button>
+          </div>
         )}
       </form>
     </div>
