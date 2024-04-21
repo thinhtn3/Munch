@@ -9,8 +9,8 @@ const axios = require("axios");
 const app = express();
 const multer = require("multer");
 let jsonData = "";
-let location = "";
 let businesses = [];
+const sharp = require("sharp"); // Import sharp at the top of your file
 
 app.use(cors()); // This will allow all domains
 
@@ -90,6 +90,13 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   }
   console.log("Uploaded file:", req.file.path);
   const filePath = req.file.path;
+
+  if (req.file.mimetype === "image/heic") {
+    await sharp(filePath).jpeg().toFile(outputFilePath); // Save the converted image
+    console.log("File converted to JPEG");
+  } else {
+    outputFilePath = filePath; // No conversion needed, use original file
+  }
   jsonData = await run(filePath);
   console.log(businesses, "91");
   // res.json(businesses)

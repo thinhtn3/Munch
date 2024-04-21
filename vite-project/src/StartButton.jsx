@@ -41,7 +41,7 @@ export default function StartButton() {
         <label htmlFor="libraryInput">
           <input
             type="file"
-            accept="image/*"
+            accept="image/*, image/jpeg, image/png, image/heic, image/heif, image/avif" //avif might not be accepted
             id="libraryInput"
             style={{ display: "none" }}
             onChange={handleImageChange}

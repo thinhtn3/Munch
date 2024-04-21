@@ -17,6 +17,21 @@ html, body {
     margin-right: 30px;
 }
 
+/* Added Stying */
+.row-info p{
+    font-size: 12px;
+    justify-content: center;
+}
+
+.card span{
+    font-size: 14px;
+    color: #3B60C4;
+    display: flex;
+    margin-top: 14px;
+    margin-left: 14px;
+}
+
+
 
 @media screen and (max-width: 480px) {
     .row-info img {
