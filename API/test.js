@@ -1,4 +1,5 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const cors = require("cors");
 require("dotenv").config();
 const fs = require("fs");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
@@ -9,7 +10,9 @@ const app = express();
 const multer = require("multer");
 let jsonData = "";
 let location = "";
-let businesses= [];
+let businesses = [];
+
+app.use(cors()); // This will allow all domains
 
 // Configure storage for multer
 const storage = multer.diskStorage({
@@ -45,8 +48,8 @@ const run = async (filePath) => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
-    console.log(jsonData)
-    console.log(jsonData.cuisine_type.toLowerCase().replace(' ', '%20')) // if category === 2 letter words, might pass back boof responses
+    console.log(jsonData);
+    console.log(jsonData.cuisine_type.toLowerCase().replace(" ", "%20")); // if category === 2 letter words, might pass back boof responses
 
     const config = {
       headers: {
@@ -55,7 +58,9 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase().replace(' ', '%20')}&sort_by=review_count`,
+      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type
+        .toLowerCase()
+        .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
 
@@ -73,7 +78,6 @@ const run = async (filePath) => {
       };
     });
 
-
     return businesses;
   } catch (error) {
     console.error("An error occurred:", error);
@@ -87,10 +91,13 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   console.log("Uploaded file:", req.file.path);
   const filePath = req.file.path;
   jsonData = await run(filePath);
-  console.log(businesses, "91")
-  res.json(businesses)
+  console.log(businesses, "91");
+  // res.json(businesses)
 });
 
+app.get("/fetch", async (req, res) => {
+  res.json(businesses);
+});
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on ${process.env.PORT}`);
