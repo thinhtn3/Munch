@@ -20,8 +20,8 @@ function ResultsPage() {
   }, []);
 
   return (
-    <div>
-      <h1>Restaurant Results</h1>
+    <div style={{display:"flex", flexDirection:"column", justifyContent:"center", width:"90vw"}}>
+      <h1 style={{color:'white'}}>Restaurant Results</h1>
       {places.map((p) => {
         return <RestaurantCard key={p.id} {...p}/>
       })}

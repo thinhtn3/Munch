@@ -106,6 +106,6 @@ app.get("/fetch", async (req, res) => {
   res.json(businesses);
 });
 
-app.listen(process.env.PORT, '192.168.68.79', () => {
+app.listen(process.env.PORT, () => {
   console.log(`App listening on ${process.env.PORT}`);
 });
