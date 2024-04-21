@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 require("dotenv").config();
 const fs = require("fs");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" }); // gemini-pro-vision gemini-1.5-pro-latest
 const express = require("express");
 const axios = require("axios");
 const app = express();
@@ -45,6 +45,8 @@ const run = async (filePath) => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
+    console.log(jsonData)
+    console.log(jsonData.cuisine_type.toLowerCase().replace(' ', '%20')) // if category === 2 letter words, might pass back boof responses
 
     const config = {
       headers: {
@@ -53,10 +55,10 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
+      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase().replace(' ', '%20')}&sort_by=review_count`,
       config
     );
-    
+
     businesses = resp.data.businesses.map((business) => {
       return {
         id: business.id,

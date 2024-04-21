@@ -9,6 +9,7 @@ const app = express();
 const multer = require("multer");
 let jsonData = "";
 let location = "";
+let businesses= [];
 
 // Configure storage for multer
 const storage = multer.diskStorage({
@@ -44,8 +45,34 @@ const run = async (filePath) => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
-    console.log(jsonData);
-    return jsonData;
+
+    const config = {
+      headers: {
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`, // Replace 'YOUR_ACCESS_TOKEN' with your actual Yelp API token
+        "Content-Type": "application/json",
+      },
+    };
+    const resp = await axios.get(
+      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
+      config
+    );
+    
+    businesses = resp.data.businesses.map((business) => {
+      return {
+        id: business.id,
+        name: business.name,
+        location: business.location.address1,
+        reviews: business.review_count,
+        rating: business.rating,
+        url: business.url,
+        is_closed: business.is_closed,
+        image_url: business.image_url,
+        phone_number: business.display_phone,
+      };
+    });
+
+
+    return businesses;
   } catch (error) {
     console.error("An error occurred:", error);
   }
@@ -58,36 +85,10 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   console.log("Uploaded file:", req.file.path);
   const filePath = req.file.path;
   jsonData = await run(filePath);
-  const config = {
-    headers: {
-      Authorization: `Bearer ${process.env.YELP_API_KEY}`, // Replace 'YOUR_ACCESS_TOKEN' with your actual Yelp API token
-      "Content-Type": "application/json",
-    },
-  };
-  res.redirect('/findRestaurant')
+  console.log(businesses, "91")
+  res.json(businesses)
 });
 
-app.get("/findRestaurant", async (req, res) => {
-  const response = await axios.get(
-    `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
-    config
-  );
-  const businesses = response.data.businesses.map((business) => {
-    return {
-      id: business.id,
-      name: business.name,
-      location: business.location.address1,
-      reviews: business.review_count,
-      rating: business.rating,
-      url: business.url,
-      is_closed: business.is_closed,
-      image_url: business.image_url,
-      phone_number: business.display_phone,
-    };
-  });
-  console.log(businesses);
-  res.json(businesses);
-});
 
 app.listen(process.env.PORT, () => {
   console.log(`App listening on ${process.env.PORT}`);
