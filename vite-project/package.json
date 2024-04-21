@@ -15,7 +15,8 @@
     "react-dom": "^18.2.0",
     "react-type": "^0.1.0",
     "react-typed": "^2.0.12",
-    "simple-typewriter": "^0.0.1"
+    "simple-typewriter": "^0.0.1",
+    "vite-plugin-inspect": "^0.8.4"
   },
   "devDependencies": {
     "@types/react": "^18.2.66",
