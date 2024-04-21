@@ -21,6 +21,7 @@ export default function App() {
           <Typewriter />
           <div className="startButton-center">
             <StartButton />
+            <a href="/result/">Click here</a>
           </div>
         </div>
         <Footer />
