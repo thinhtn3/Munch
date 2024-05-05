@@ -3,9 +3,8 @@ import photo from "./assets/photo.png";
 import "./App.css";
 import StartButton from "./StartButton";
 import Footer from "./Footer";
-import { Typed } from "react-typed";
 import Typewriter from "./Typewriter1";
-import Typewriter2 from "./Typerwriter2";
+
 
 export default function App() {
   return (
@@ -17,11 +16,10 @@ export default function App() {
         </div>
 
         <div className="slogan-column">
-          {/* <h2>Hungry?</h2> */}
           <Typewriter />
           <div className="startButton-center">
             <StartButton />
-            <a href="/result/">Click here</a>
+
           </div>
         </div>
         <Footer />

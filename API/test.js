@@ -9,6 +9,7 @@ const axios = require("axios");
 const app = express();
 const multer = require("multer");
 let jsonData = "";
+let location = "irvine";
 let businesses = [];
 const sharp = require("sharp"); // Import sharp at the top of your file
 
@@ -58,11 +59,14 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type
+      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${jsonData.cuisine_type
         .toLowerCase()
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
+
+    console.log(
+      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${jsonData.cuisine_type.toLowerCase().replace(" ", "%20")}&sort_by=review_count`);
 
     businesses = resp.data.businesses.map((business) => {
       return {
@@ -107,7 +111,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
     outputFilePath = filePath; // No conversion needed, use the original file
   }
   jsonData = await run(outputFilePath);
-  console.log(businesses, "91");
+  // console.log(businesses, "91");
   // res.json(businesses)
 });
 

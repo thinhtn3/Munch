@@ -8,7 +8,7 @@ const axios = require("axios");
 const app = express();
 const multer = require("multer");
 let jsonData = "";
-let location = "";
+let location = "NYC";
 let businesses= [];
 
 // Configure storage for multer
@@ -53,9 +53,10 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=westminsterCA&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
+      `https://api.yelp.com/v3/businesses/search?location=${location}}&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
       config
     );
+    console.log(`https://api.yelp.com/v3/businesses/search?location=${location}}&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`)
     
     businesses = resp.data.businesses.map((business) => {
       return {
@@ -85,7 +86,7 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   console.log("Uploaded file:", req.file.path);
   const filePath = req.file.path;
   jsonData = await run(filePath);
-  console.log(businesses, "91")
+  // console.log(businesses, "91")
   res.json(businesses)
 });
 
