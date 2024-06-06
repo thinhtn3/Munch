@@ -2,9 +2,9 @@ import { React } from "react";
 import photo from "./assets/photo.png";
 import "./App.css";
 import StartButton from "./StartButton";
+import LocationForm from "./LocationForm";
 import Footer from "./Footer";
 import Typewriter from "./Typewriter1";
-
 
 export default function App() {
   return (
@@ -18,8 +18,7 @@ export default function App() {
         <div className="slogan-column">
           <Typewriter />
           <div className="startButton-center">
-            <StartButton />
-
+            <LocationForm />
           </div>
         </div>
         <Footer />

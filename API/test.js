@@ -8,14 +8,15 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const multer = require("multer");
-let jsonData = "";
-let location = "irvine";
+let jsonData;
+let location;
 let businesses = [];
-const sharp = require("sharp"); // Import sharp at the top of your file
 
+app.use(express.json());
 app.use(cors()); // This will allow all domains
 
-// Configure storage for multer
+
+//Configure storage for multer (got from multer documentation )
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/"); // Ensure the directory exists
@@ -26,16 +27,17 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
+
 const run = async (filePath) => {
   try {
     const prompt =
-      "return in JSON without markdown syntax, the food_name, and cuisine type, based on the image provided";
+      "return in JSON without markdown syntax, the food_name, and cuisine_type, based on the image provided"; // prompt to be sent to Gemini API
 
     // Read the image file and convert it to Base64
     const imageBuffer = fs.readFileSync(filePath);
     const imageData = imageBuffer.toString("base64");
 
-    // Construct the image object
+    // Declaring an 'image' object
     const image = {
       inlineData: {
         data: imageData,
@@ -49,12 +51,12 @@ const run = async (filePath) => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
-    console.log(jsonData);
-    console.log(jsonData.cuisine_type.toLowerCase().replace(" ", "%20")); // if category === 2 letter words, might pass back boof responses
+    console.log("foo");
+    console.log(jsonData.cuisine_type.toLowerCase().replace(" ", "%20")); // account for spaces with %20 to be used in get API request
 
     const config = {
       headers: {
-        Authorization: `Bearer ${process.env.YELP_API_KEY}`, // Replace 'YOUR_ACCESS_TOKEN' with your actual Yelp API token
+        Authorization: `Bearer ${process.env.YELP_API_KEY}`,
         "Content-Type": "application/json",
       },
     };
@@ -64,10 +66,8 @@ const run = async (filePath) => {
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-
-    console.log(
-      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${jsonData.cuisine_type.toLowerCase().replace(" ", "%20")}&sort_by=review_count`);
-
+    
+    // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
       return {
         id: business.id,
@@ -85,7 +85,6 @@ const run = async (filePath) => {
         phone_number: business.display_phone,
       };
     });
-
     return businesses;
   } catch (error) {
     console.error("An error occurred:", error);
@@ -93,26 +92,10 @@ const run = async (filePath) => {
 };
 
 app.post("/upload", upload.single("file"), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).send("No file uploaded.");
-  }
-
   const filePath = req.file.path;
-  let outputFilePath; // Declare this variable to hold the path of the processed image
-
-  if (
-    req.file.mimetype === "image/heic" ||
-    req.file.mimetype === "image/heif"
-  ) {
-    outputFilePath = filePath.replace(/\.(heic|heif)$/i, ".jpeg"); // Define output file path
-    await sharp(filePath).jpeg().toFile(outputFilePath); // Convert and save the image
-    console.log("File converted to JPEG");
-  } else {
-    outputFilePath = filePath; // No conversion needed, use the original file
-  }
-  jsonData = await run(outputFilePath);
-  // console.log(businesses, "91");
-  // res.json(businesses)
+  console.log(filePath);
+  location = req.body.text;
+  jsonData = await run(filePath);
 });
 
 app.get("/fetch", async (req, res) => {
@@ -120,5 +103,5 @@ app.get("/fetch", async (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-  console.log(`App listening on ${process.env.PORT}`);
+  console.log(`App listening on ${process.env.PORT} test.js`);
 });

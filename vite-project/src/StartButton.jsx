@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import axios from "axios";
 import "./StartButton.css";
 import AnalyzeButton from "./AnalyzeButton";
 
-export default function StartButton() {
+export default function StartButton({ geolocation }) {
   const [imageFile, setImageFile] = useState(null);
 
+  // Display image after uploading
   const handleImageChange = (e) => {
     e.preventDefault();
     let file = e.target.files[0];
@@ -14,7 +14,6 @@ export default function StartButton() {
       setImageFile(file);
     }
   };
-
 
   return (
     <div>
@@ -36,7 +35,9 @@ export default function StartButton() {
           </button>
         </label>
 
-        {imageFile && <AnalyzeButton imgFile={imageFile}/>}
+        {imageFile && (
+          <AnalyzeButton imgFile={imageFile} geolocation={geolocation} />
+        )}
       </form>
     </div>
   );

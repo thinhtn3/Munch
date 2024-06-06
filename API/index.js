@@ -1,17 +1,21 @@
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const cors = require("cors");
 require("dotenv").config();
 const fs = require("fs");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" });
+const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" }); // gemini-pro-vision gemini-1.5-pro-latest
 const express = require("express");
 const axios = require("axios");
 const app = express();
 const multer = require("multer");
 let jsonData = "";
-let location = "NYC";
-let businesses= [];
+let location = "irvine";
+let businesses = [];
+const sharp = require("sharp"); // Import sharp at the top of your file
 
-// Configure storage for multer
+app.use(cors()); // This will allow all domains
+
+//Configure storage for multer
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, "uploads/"); // Ensure the directory exists
@@ -45,6 +49,8 @@ const run = async (filePath) => {
     const text = await response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
+    console.log(jsonData);
+    console.log(jsonData.cuisine_type.toLowerCase().replace(" ", "%20")); // if category === 2 letter words, might pass back boof responses
 
     const config = {
       headers: {
@@ -53,16 +59,27 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=${location}}&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`,
+      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${jsonData.cuisine_type
+        .toLowerCase()
+        .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-    console.log(`https://api.yelp.com/v3/businesses/search?location=${location}}&categories=${jsonData.cuisine_type.toLowerCase()}&sort_by=review_count`)
-    
+
+    console.log(
+      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${jsonData.cuisine_type
+        .toLowerCase()
+        .replace(" ", "%20")}&sort_by=review_count`
+    );
+
     businesses = resp.data.businesses.map((business) => {
       return {
         id: business.id,
         name: business.name,
-        location: business.location.address1,
+        address1: business.location.address1,
+        city: business.location.city,
+        state: business.location.state,
+        zip_code: business.location.zip_code,
+        country: business.location.country,
         reviews: business.review_count,
         rating: business.rating,
         url: business.url,
@@ -71,7 +88,6 @@ const run = async (filePath) => {
         phone_number: business.display_phone,
       };
     });
-
 
     return businesses;
   } catch (error) {
@@ -83,14 +99,28 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   if (!req.file) {
     return res.status(400).send("No file uploaded.");
   }
-  console.log("Uploaded file:", req.file.path);
+  console.log(req.file);
   const filePath = req.file.path;
-  jsonData = await run(filePath);
-  // console.log(businesses, "91")
-  res.json(businesses)
+  let outputFilePath; // Declare this variable to hold the path of the processed image
+
+  // if (
+  //   req.file.mimetype === "image/heic" ||
+  //   req.file.mimetype === "image/heif"
+  // ) {
+  //   outputFilePath = filePath.replace(/\.(heic|heif)$/i, ".jpeg"); // Define output file path
+  //   await sharp(filePath).jpeg().toFile(outputFilePath); // Convert and save the image
+  //   console.log("File converted to JPEG");
+  // } else {
+  //   outputFilePath = filePath; // No conversion needed, use the original file
+  // }
+  outputFilePath = filePath;
+  jsonData = await run(outputFilePath);
 });
 
+app.get("/fetch", async (req, res) => {
+  res.json(businesses);
+});
 
 app.listen(process.env.PORT, () => {
-  console.log(`App listening on ${process.env.PORT}`);
+  console.log(`App listening on ${process.env.PORT} test.js`);
 });
