@@ -1,20 +1,19 @@
 #root {
   width: 100%;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 0;
   text-align: center;
   height: 100%;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
+  overflow-x: hidden;
+  opacity: 1;
 }
-
 .column {
   display: flex;
   flex-direction: column;
   height: 90vh;
   justify-content: space-between;
   width: 100v;
-
-
 }
 .logo-row {
   display: flex;
@@ -23,7 +22,7 @@
 }
 /*  */
 .logo-row img {
-  min-width:40px;
+  min-width: 40px;
   min-height: 40px;
   align-self: center;
 }
@@ -40,13 +39,12 @@
   font-weight: 700;
 }
 
-.slogan-column  h3 {
+.slogan-column h3 {
   font-size: 24px;
   margin-top: 0;
   margin-bottom: 50px;
   max-width: 200;
   font-weight: 600;
-
 }
 .logo {
   width: 4em;
@@ -64,7 +62,6 @@
   font-weight: 100;
 }
 
-
 @media (prefers-reduced-motion: no-preference) {
   a:nth-of-type(2) .logo {
     animation: logo-spin infinite 20s linear;
@@ -75,6 +72,19 @@
   padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+.background {
+  margin: 0px 0px;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+.background::before {
+  content: ''; 
+  background-image: url(./assets/12.jpeg);
+  background-size: cover;
+  position: absolute;
+  opacity: 0.15;
+  inset: 0;
 }

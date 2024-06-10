@@ -8,7 +8,7 @@ export default function LocationForm() {
 
   // Function to set Geolocation (update state) when place is clicked on
   const handlePlaceSelected = (place) => {
-    setGeolocation(place.formatted_address); 
+    setGeolocation(place.formatted_address);
     console.log(place.formatted_address);
   };
 
@@ -21,6 +21,7 @@ export default function LocationForm() {
     <section>
       <form onSubmit={handleSubmit}>
         <Autocomplete
+          style={{ borderRadius:'8px', border: '0px', width: "300px", fontSize: "1.5em", textAlign: "center" }}
           className="inputBox"
           apiKey={import.meta.env.VITE_GOOGLE_PLACES_API_KEY}
           types={["establishment"]}

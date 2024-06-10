@@ -45,22 +45,29 @@ export default function RestaurantCard({
 
   return (
     <>
-        <a href={url} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-      <div className={`card ${isVisible ? "is-visible" : ""}`} ref={cardRef}>
-        <div className="row-info">
-          <img src={image_url} alt={name} />
-          <div className="text-column">
-            <h1>{name}</h1>
-            <p>{address1},</p>
-            <p>{city}, {state} {zip_code}</p>
-            <p>{country}</p>
-            <p style={{textDecoration:'underline'}}>{phone_number}</p>
+      <a
+        href={url}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ textDecoration: "none" }}
+      >
+        <div className={`card ${isVisible ? "is-visible" : ""}`} ref={cardRef}>
+          <div className="row-info">
+            <img src={image_url} alt={name} />
+            <div className="text-column">
+              <h1>{name}</h1>
+              <p>{address1},</p>
+              <p>
+                {city}, {state} {zip_code}
+              </p>
+              <p>{country}</p>
+              <p style={{ textDecoration: "underline" }}>{phone_number}</p>
+            </div>
           </div>
+          <span>
+            {rating}⭐ ({reviews} reviews)
+          </span>
         </div>
-        <span>
-          {rating} ({reviews} reviews)
-        </span>
-      </div>
       </a>
     </>
   );

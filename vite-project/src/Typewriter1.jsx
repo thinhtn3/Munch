@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./Typewriter.css"; // Import the CSS for styling
 
-const Typewriter = ({ text1 = "Hungry?", text2 = "Let's get started.", speed = 150 }) => {
+const Typewriter = ({
+  text1 = "Hungry?",
+  text2 = "Let's get started.",
+  speed = 150,
+}) => {
   const [index1, setIndex1] = useState(0);
   const [index2, setIndex2] = useState(0);
   const [showCursor, setShowCursor] = useState(true);
@@ -27,17 +31,44 @@ const Typewriter = ({ text1 = "Hungry?", text2 = "Let's get started.", speed = 1
   }, [index1, text1.length, index2, text2.length, speed]);
 
   return (
-    <>
-      <h2>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: " center",
+        width: "97.5vw",
+      }}
+    >
+      <h2 style={{ fontWeight: "400" }}>
         {text1.substring(0, index1)}
-        {showCursor && index1 < text1.length && <span className="cursor">|</span>}
+        {showCursor && index1 < text1.length && (
+          <span className="cursor">|</span>
+        )}
       </h2>
       {/* The h3 element now exists from the start with transparent text to maintain layout */}
-      <h3>
-        {index1 === text1.length ? text2.substring(0, index2) : '\u00A0' /* Non-breaking space */}
-        {showCursor && index2 < text2.length && <span className="cursor">|</span>}
+      <h3 style={{ fontWeight: "400", marginBottom:'0px' }}>
+        {
+          index1 === text1.length
+            ? text2.substring(0, index2)
+            : "\u00A0" /* Non-breaking space */
+        }
+        {showCursor && index2 < text2.length && (
+          <span className="cursor">|</span>
+        )}
       </h3>
-    </>
+
+      <p
+        style={{
+          fontWeight: "100",
+          fontSize: "1.3em",
+          paddingBottom: "1em",
+          width: "",
+        }}
+      >
+        Simply upload a photo of your favorite dish and get a curated list of
+        nearby restaurants that serve that delicious dish.
+      </p>
+    </div>
   );
 };
 

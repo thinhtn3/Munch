@@ -6,15 +6,15 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" }); // gemini-pro-vision gemini-1.5-pro-latest
 const express = require("express");
 const axios = require("axios");
-const app = express();
 const multer = require("multer");
+
 let jsonData;
 let location;
 let businesses = [];
 
+const app = express();
 app.use(express.json());
 app.use(cors()); // This will allow all domains
-
 
 //Configure storage for multer (got from multer documentation )
 const storage = multer.diskStorage({
@@ -26,7 +26,6 @@ const storage = multer.diskStorage({
   },
 });
 const upload = multer({ storage: storage });
-
 
 const run = async (filePath) => {
   try {
@@ -47,12 +46,11 @@ const run = async (filePath) => {
 
     // Generate content with the prompt and image
     const result = await model.generateContent([prompt, image]);
-    const response = await result.response;
-    const text = await response.text();
+    const response = result.response;
+    const text = response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
-    console.log("foo");
-    console.log(jsonData.cuisine_type.toLowerCase().replace(" ", "%20")); // account for spaces with %20 to be used in get API request
+    console.log(jsonData.food_name.toLowerCase().replace(" ", "%20")); // account for spaces with %20 to be used in get API request
 
     const config = {
       headers: {
@@ -61,15 +59,21 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=${location}&categories=${jsonData.cuisine_type
+      `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonData.food_name
         .toLowerCase()
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-    
+    console.log(
+      `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonData.food_name
+        .toLowerCase()
+        .replace(" ", "%20")}&sort_by=review_count`
+    );
+
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
       return {
+        food_name: jsonData.food_name,
         id: business.id,
         name: business.name,
         address1: business.location.address1,
@@ -85,6 +89,7 @@ const run = async (filePath) => {
         phone_number: business.display_phone,
       };
     });
+    console.log(businesses[0]);
     return businesses;
   } catch (error) {
     console.error("An error occurred:", error);
@@ -92,10 +97,14 @@ const run = async (filePath) => {
 };
 
 app.post("/upload", upload.single("file"), async (req, res) => {
-  const filePath = req.file.path;
-  console.log(filePath);
-  location = req.body.text;
-  jsonData = await run(filePath);
+  if (!req.file) {
+    console.log("This shit dont work");
+  } else {
+    const filePath = req.file.path;
+    console.log(filePath);
+    location = req.body.text;
+    jsonData = await run(filePath);
+  }
 });
 
 app.get("/fetch", async (req, res) => {

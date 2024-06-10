@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
-
+import BackButton from "./BackButton";
 
 function ResultsPage() {
   const [places, setPlaces] = useState([]);
@@ -20,13 +20,25 @@ function ResultsPage() {
   }, []);
 
   return (
-    <div style={{display:"flex", flexDirection:"column", justifyContent:"center", width:"90vw"}}>
-      <h1 style={{color:'white'}}>Restaurant Results</h1>
-      <a className= "anchor"style={{color:'white', textDecoration:'none', fontSize:'20px'}}href="/">PRESS TO GO BACK</a>
-      {places.map((p) => {
-        return <RestaurantCard key={p.id} {...p}/>
-      })}
-    </div>
+    <>
+      <div>
+        <h1 style={{ color: "white" }}>Restaurant Results</h1>
+        <BackButton />
+      </div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "center",
+          width: "90vw",
+          flexWrap: "wrap",
+        }}
+      >
+        {places.map((p) => {
+          return <RestaurantCard key={p.id} {...p} />;
+        })}
+      </div>
+    </>
   );
 }
 

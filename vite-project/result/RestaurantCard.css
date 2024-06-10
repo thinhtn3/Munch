@@ -1,170 +1,132 @@
 /* Base styles for card layout */
-html, body {
-    font-family: Inter;
+html,
+body {
+  font-family: Inter;
 }
 
 /* Changes color text to white*/
-h1, h2, h3, p, span {
-    color: #1953f2;
-
+h1,
+h2,
+h3,
+p,
+span {
+  color: #1953f2;
 }
 
 .card {
-    transition: 0.4s;
-    border-radius: 50px;
+  transition: 0.4s;
 }
 .card:hover {
-    transition: 0.6s;
-    background-color: rgb(239, 239, 134);
+  transition: 0.6s;
+  background-color: rgb(239, 239, 134);
 }
-
-
-
-/* .card {
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    font-size: 10px;
-}
-
-.row-info {
-    display: flex;
-}
-
-.row-info h1 {
-    font-size: 18px;
-}
-
-.row-info img {
-    margin-right: 30px;
-}
-
-.row-info p {
-    font-size: 12px;
-    justify-content: center;
-}
-
-.card span {
-    font-size: 14px;
-    color: #3B60C4;
-    display: flex;
-    margin-top: 14px;
-    margin-left: 14px;
-} */
 
 /* Media queries for mobile and desktop */
 
 /* [MOBILE VERSION CSS] */
 @media screen and (max-width: 480px) {
-    .card {
-        opacity: 0; /* Start with the card invisible */
-        transition: opacity 1s ease-out; /* Smooth transition for the opacity */
-        will-change: opacity; /* Optimize the opacity property for animations */
-        width: 90%; /* Adjust width for mobile */
-        flex-direction: column; /* Stack elements vertically on mobile */
-        align-items: center; /* Center elements on mobile */
+  .card {
+    opacity: 0; /* Start with the card invisible */
+    transition: opacity 1s ease-out; /* Smooth transition for the opacity */
+    will-change: opacity; /* Optimize the opacity property for animations */
+    width: 90%; /* Adjust width for mobile */
+    flex-direction: column; /* Stack elements vertically on mobile */
+    align-items: center; /* Center elements on mobile */
 
-        display: flex;
-        justify-content: space-between;
-        width: 50%;
-        font-size: 10px;
-    }
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    font-size: 10px;
+  }
 
-    .card.is-visible {
-        opacity: 1; /* Full opacity when the card is in view */
-    }
+  .card.is-visible {
+    opacity: 1; /* Full opacity when the card is in view */
+  }
 
-    .row-info img {
-        width: 100px;
-        max-width: 100px;
-        margin-right: 0; 
-        margin-bottom: 10px;
-    }
+  .row-info img {
+    width: 100px;
+    max-width: 100px;
+    margin-bottom: 10px;
+    margin-right: 30px;
+  }
 
-    
-    .row-info {
-        display: flex;
-    }
-    
-    .row-info h1 {
-        font-size: 18px;
-    }
-    
-    .row-info img {
-        margin-right: 30px;
-    }
-    
-    .row-info p {
-        font-size: 12px;
-        justify-content: center; /* You may want to adjust this */
-    }
-    
-    /*RATINGS AND REVIEWS */
-    .card span {
-        font-size: 20px;
-        color: #3B60C4;
-        display: flex;
-        margin-top: 14px;
-        margin-left: 14px;
-    }
+  .row-info {
+    display: flex;
+  }
+
+  .row-info h1 {
+    font-size: 18px;
+  }
+
+  .row-info p {
+    font-size: 12px;
+    justify-content: center; /* You may want to adjust this */
+  }
+
+  /*RATINGS AND REVIEWS */
+  .card span {
+    font-size: 20px;
+    color: #3b60c4;
+    display: flex;
+    margin-top: 14px;
+    margin-left: 14px;
+  }
 }
-
 
 /*[DESKTOP CSS] */
 @media screen and (min-width: 1080px) {
-    .card {
-        display: flex;
-        justify-content: space-between;
-        width: px;
-        font-size: 10px;
-        margin-bottom: 40px;
-        background-color: aliceblue;
-        opacity: 0; /* Start with the card invisible */
-        transition: opacity 1s ease-out; /* Smooth transition for the opacity */
-        will-change: opacity; /* Optimize the opacity property for animations */
-    }
+  .card {
+    display: flex;
+    flex-direction: column;
+    width: 700px;
+    height: 320px;
+    margin-bottom: 40px;
+    background-color: aliceblue;
+    padding: 2em;
+    opacity: 0; /* Start with the card invisible */
+    transition: opacity 1s ease-out; /* Smooth transition for the opacity */
+    will-change: opacity; /* Optimize the opacity property for animations */
+  }
 
-    .card.is-visible {
-        opacity: 1; /* Full opacity when the card is in view */
-    }
-    
-    .row-info {
-        display: flex;
-    }
-    
-    .row-info h1 {
-        font-size: 40px;
-        font-weight: 800;
-    }
-    
-    .row-info img {
-        margin-right: 30px;
-        height: 400px;
-        width: 400px;
-        max-height: 400px;
-        max-width: 400px;
-        min-height: 400px;
-        min-width: 400px;
-    }
-    
-    .row-info p {
-        font-size: 30px;
-        justify-content: center;
-        font-weight: 500;
-    }
-    
-    /*RATINGS AND REVIEWS */
-    .card span {
-        font-size: 26px;
-        color: #132151;
-        display: flex;
-        margin-top: 18px;
-        margin-left: 14px;
-        margin-right: 20px;
-        font-weight: 500;
-    }
+  .card.is-visible {
+    opacity: 1; /* Full opacity when the card is in view */
+  }
+
+  .row-info {
+    display: flex;
+  }
+
+  .row-info h1 {
+    font-size: 2em;
+    font-weight: 800;
+  }
+
+  .row-info img {
+    margin-right: 30px;
+    height: 250px;
+    width: 250px;
+    border-radius: 30px;
+    /* max-height: 200px;
+    max-width: 200px;
+    min-height: 200px;
+    min-width: 200px; */
+  }
+
+  .row-info p {
+    font-size: 1.3em;
+    justify-content: center;
+    font-weight: 500;
+  }
+
+  /*RATINGS AND REVIEWS */
+  .card span {
+    font-size: 26px;
+    color: #132151;
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 .card {
-    margin-left: 75px;
+  margin-left: 75px;
 }
