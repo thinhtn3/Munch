@@ -35,12 +35,12 @@ function ResultsPage() {
   return (
     <>
       <div className="background">
-        <div>
-          <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
-            Restaurant Results
-          </motion.h1>
+        <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
+          Restaurant Results
+        </motion.h1>
+        <nav className="backNav">
           <BackButton />
-        </div>
+        </nav>
         <motion.div
           ref={carousel}
           initial={{ x: 0 }}
@@ -52,6 +52,7 @@ function ResultsPage() {
             flexDirection: "row",
             justifyContent: "center",
             padding: "1em",
+            maxHeight: "100%",
           }}
         >
           <motion.div
@@ -61,6 +62,7 @@ function ResultsPage() {
             style={{
               display: "flex",
               maxWidth: "100%", // Ensure it doesn't overflow the viewport
+              height: "75vh",
             }}
           >
             {places.map((p) => {
@@ -76,7 +78,6 @@ function ResultsPage() {
             })}
           </motion.div>
         </motion.div>
-        {/* <CarouselButton x={x} setX={setX} width={width} /> */}
       </div>
     </>
   );

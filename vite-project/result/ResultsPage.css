@@ -1,5 +1,21 @@
 body {
   opacity: 1;
-
   background-color: #242525;
+  padding: 0;
+  margin: 0;
+}
+
+@media screen and (max-device-width: 810px) {
+  .carousel {
+    display: flex;
+    flex-direction: column;
+  }
+  .innerCarousel {
+    display: flex;
+    flex-direction: column;
+  }
+  .backNav {
+    display: flex;
+    /* justify-content: center; */
+  }
 }

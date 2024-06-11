@@ -10,11 +10,18 @@ h2,
 h3,
 p,
 span {
-  color: #1953f2;
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 166, 0, 1) 98%
+  );
+  background-clip: text;
+  color: transparent;
 }
 
 .card {
   transition: 0.4s;
+  background-color: #393a3a;
 }
 .card:hover {
   transition: 0.6s;
@@ -24,67 +31,94 @@ span {
 /* Media queries for mobile and desktop */
 
 /* [MOBILE VERSION CSS] */
-@media screen and (max-width: 480px) {
+
+@media screen and (max-device-width: 550px) {
   .card {
+    margin: 2em 0em;
+    width: 340px;
+    height: 520px;
+    border-radius: 30px;
     opacity: 0; /* Start with the card invisible */
     transition: opacity 1s ease-out; /* Smooth transition for the opacity */
     will-change: opacity; /* Optimize the opacity property for animations */
-    width: 90%; /* Adjust width for mobile */
-    flex-direction: column; /* Stack elements vertically on mobile */
-    align-items: center; /* Center elements on mobile */
-
-    display: flex;
-    justify-content: space-between;
-    width: 50%;
-    font-size: 10px;
   }
 
   .card.is-visible {
     opacity: 1; /* Full opacity when the card is in view */
   }
 
-  .row-info img {
-    width: 100px;
-    max-width: 100px;
-    margin-bottom: 10px;
-    margin-right: 30px;
+  .row-info {
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .row-info h2, h3, p, span {
+    padding-left: 1em;
+  }
+  .row-info h1 {
+    padding-left: 0.5em;
+  }
+
+  .imageContainer img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    object-fit: cover;
+  }
+
+  .imageContainer {
+    width: 100%; /* Adjust to your desired width */
+    height: 300px; /* Adjust to your desired height */
+  }
+}
+
+@media screen and (min-device-width: 550px) and (max-device-width: 810px) {
+  .card {
+    margin: 1em 0em;
+    width: 500px;
+    height: 600px;
+    border-radius: 30px;
+    opacity: 0; /* Start with the card invisible */
+    transition: opacity 1s ease-out; /* Smooth transition for the opacity */
+    will-change: opacity; /* Optimize the opacity property for animations */
+  }
+
+  .card.is-visible {
+    opacity: 1; /* Full opacity when the card is in view */
   }
 
   .row-info {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  .row-info h1 {
-    font-size: 18px;
+  .imageContainer img {
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    object-fit: cover;
   }
 
-  .row-info p {
-    font-size: 12px;
-    justify-content: center; /* You may want to adjust this */
-  }
-
-  /*RATINGS AND REVIEWS */
-  .card span {
-    font-size: 20px;
-    color: #3b60c4;
-    display: flex;
-    margin-top: 14px;
-    margin-left: 14px;
+  .imageContainer {
+    width: 100%; /* Adjust to your desired width */
+    height: 300px; /* Adjust to your desired height */
   }
 }
 
 /*[DESKTOP CSS] */
-@media screen and (min-width: 1080px) {
+@media screen and (min-width: 810px) {
   .card {
-    display: flex;
-    flex-direction: column;
     width: 700px;
     height: 500px;
-    background-color: aliceblue;
     opacity: 0; /* Start with the card invisible */
     transition: opacity 1s ease-out; /* Smooth transition for the opacity */
     will-change: opacity; /* Optimize the opacity property for animations */
-    background-color: #393a3a;
+
     border-radius: 30px;
     margin: 25px 50px;
   }
@@ -100,11 +134,6 @@ span {
   .row-info h1 {
     font-size: 2em;
     font-weight: 800;
-    background-image: linear-gradient(
-      150deg,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 166, 0, 1) 98%
-    );
     background-clip: text;
     color: transparent;
   }
@@ -143,13 +172,11 @@ span {
     background-clip: text;
     color: transparent;
   }
-}
-
-.textColumn {
-  padding: 0em 1.5em;
-}
-
-.imageContainer {
-  width: 300px; /* Adjust to your desired width */
-  height: 500px; /* Adjust to your desired height */
+  .imageContainer {
+    width: 300px; /* Adjust to your desired width */
+    height: 500px; /* Adjust to your desired height */
+  }
+  .textColumn {
+    padding: 0em 1.5em;
+  }
 }

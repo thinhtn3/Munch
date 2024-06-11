@@ -46,6 +46,7 @@ export default function RestaurantCard({
   return (
     <>
       <a
+        className="link"
         href={url}
         target="_blank"
         rel="noopener noreferrer"

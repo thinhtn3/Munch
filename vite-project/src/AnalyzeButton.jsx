@@ -15,7 +15,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
     setTimeout(() => {
       setLoading(false); // False to remove loading animation
       location.href = "/result/"; // Move redirection here
-    }, 5600); // Adjust the duration as needed
+    }, 6000); // Adjust the duration as needed
 
     // Create a new formData to be sent to server (includes a file and text)
     const formData = new FormData();
