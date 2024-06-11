@@ -1,29 +1,29 @@
 .displayImage {
-    display: flex;
-    row-gap: 20px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  row-gap: 20px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .displayImage button {
-    border-radius: 8px;
-    padding: 0.6em 1.2em;
-    font-size: 1.15em;
-    font-weight: 500;
-    font-family: inherit;
-    background-color: #3b60c4;
-    cursor: pointer;
-    width: 330px;
-    transition: 0.3s;
-    border: 0px;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 20px;
+  border-radius: 8px;
+  padding: 0.6em 1.2em;
+  font-size: 1.15em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: rgb(63, 94, 251);
+  cursor: pointer;
+  width: 330px;
+  transition: 0.3s;
+  border: 0px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 .displayImage button:hover {
-    background-color: #233770;
-  }
+  background-color: rgb(44, 65, 173);
+}

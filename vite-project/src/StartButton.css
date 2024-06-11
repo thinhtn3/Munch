@@ -4,7 +4,7 @@
   font-size: 1.15em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #3b60c4;
+  background-color: rgb(209, 137, 4);
   cursor: pointer;
   width: 330px;
   transition: 0.3s;
@@ -15,6 +15,7 @@
   align-items: center;
   margin-bottom: 20px;
 }
+
 .takePhotoButton:hover {
-  background-color: #233770;
+  background-color: rgb(174, 113, 2);
 }

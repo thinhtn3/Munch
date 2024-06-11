@@ -53,8 +53,11 @@ export default function RestaurantCard({
       >
         <div className={`card ${isVisible ? "is-visible" : ""}`} ref={cardRef}>
           <div className="row-info">
-            <img src={image_url} alt={name} />
-            <div className="text-column">
+            <div className="imageContainer">
+              <img src={image_url} alt={name} />
+            </div>
+
+            <div className="textColumn">
               <h1>{name}</h1>
               <p>{address1},</p>
               <p>
@@ -62,11 +65,11 @@ export default function RestaurantCard({
               </p>
               <p>{country}</p>
               <p style={{ textDecoration: "underline" }}>{phone_number}</p>
+              <span>
+                {rating}⭐ ({reviews} reviews)
+              </span>
             </div>
           </div>
-          <span>
-            {rating}⭐ ({reviews} reviews)
-          </span>
         </div>
       </a>
     </>

@@ -21,7 +21,14 @@ export default function LocationForm() {
     <section>
       <form onSubmit={handleSubmit}>
         <Autocomplete
-          style={{ borderRadius:'8px', border: '0px', width: "300px", fontSize: "1.5em", textAlign: "center" }}
+          style={{
+            borderRadius: "50px",
+            border: "0px",
+            width: "300px",
+            fontSize: "1.25em",
+            textAlign: "center",
+            width: '330px'
+          }}
           className="inputBox"
           apiKey={import.meta.env.VITE_GOOGLE_PLACES_API_KEY}
           types={["establishment"]}

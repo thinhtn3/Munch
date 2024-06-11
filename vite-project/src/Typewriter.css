@@ -1,14 +1,24 @@
 .cursor {
-    font-weight: bold;
-    color: #3B60C4; /* Change the cursor color to blue */
+  font-weight: bold;
+  color: #3b60c4; /* Change the cursor color to blue */
+}
+
+.blinking {
+  animation: blink-animation 1s steps(1, start) infinite;
+}
+
+@keyframes blink-animation {
+  50% {
+    opacity: 0;
   }
-    
-    .blinking {
-      animation: blink-animation 1s steps(1, start) infinite;
-    }
-    
-    @keyframes blink-animation {
-      50% {
-        opacity: 0;
-      }
-    }
+}
+
+h2, h3 {
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 166, 0, 1) 98%
+  );
+  background-clip: text;
+  color: transparent;
+}

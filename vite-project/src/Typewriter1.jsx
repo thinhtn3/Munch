@@ -39,14 +39,20 @@ const Typewriter = ({
         width: "97.5vw",
       }}
     >
-      <h2 style={{ fontWeight: "400" }}>
+      <h2
+        style={{
+          fontWeight: "400",
+          backgroundImage:
+            "linear-gradient(150deg, rgba(255,255,255,1) 0%, rgba(255,166,0,1) 69%);",
+        }}
+      >
         {text1.substring(0, index1)}
         {showCursor && index1 < text1.length && (
           <span className="cursor">|</span>
         )}
       </h2>
       {/* The h3 element now exists from the start with transparent text to maintain layout */}
-      <h3 style={{ fontWeight: "400", marginBottom:'0px' }}>
+      <h3 style={{ fontWeight: "400", marginBottom: "0px" }}>
         {
           index1 === text1.length
             ? text2.substring(0, index2)
