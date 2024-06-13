@@ -30,7 +30,7 @@ const upload = multer({ storage: storage });
 const run = async (filePath) => {
   try {
     const prompt =
-      "return in JSON without markdown syntax, the food_name, and cuisine_type, based on the image provided"; // prompt to be sent to Gemini API
+      "return in JSON without markdown syntax, is_food, the food_name, and cuisine_type, based on the image provided"; // prompt to be sent to Gemini API
 
     // Read the image file and convert it to Base64
     const imageBuffer = fs.readFileSync(filePath);
@@ -49,7 +49,8 @@ const run = async (filePath) => {
     const response = result.response;
     const text = response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
-    jsonData = JSON.parse(cleanText);
+    jsonGoogle = JSON.parse(cleanText);
+    console.log(jsonGoogle);
 
     const config = {
       headers: {
@@ -58,21 +59,16 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonData.food_name
+      `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonGoogle.food_name
         .toLowerCase()
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-    // console.log(
-    //   `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonData.food_name
-    //     .toLowerCase()
-    //     .replace(" ", "%20")}&sort_by=review_count`
-    // );
 
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
       return {
-        food_name: jsonData.food_name,
+        food_name: jsonGoogle.food_name,
         id: business.id,
         name: business.name,
         address1: business.location.address1,
@@ -94,22 +90,27 @@ const run = async (filePath) => {
   }
 };
 
-app.post("/upload", upload.single("file"), async (req, res) => {
+app.post("/api/upload", upload.single("file"), async (req, res) => {
   if (!req.file) {
     console.log("This shit dont work");
   } else {
     console.log("post request made");
     const filePath = req.file.path;
     location = req.body.text;
-    jsonData = await run(filePath);
-    console.log("completed");
-    res.status(200).end(); //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
-  }
+    postResult = await run(filePath);
+    if (postResult) {
+      res.status(200).end();
+    } else {
+      res.status(404).send('THIS SHIT IS NOT FOOD')
+    }
+
+    // console.log("completed");
+    // res.status(200).end(); //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
+  } //sends status 200 to let clientside know they can redirect to /results
 });
 
 app.get("/fetch", async (req, res) => {
-  // console.log(businesses)
-  res.json(businesses);
+  res.json(businesses); //
 });
 
 app.listen(process.env.PORT, "0.0.0.0", () => {

@@ -50,7 +50,7 @@ function ResultsPage() {
           animate={{ x: 0 }}
           className="carousel"
           style={{
-            // overflow: "hidden",
+            overflow: "hidden",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
@@ -68,7 +68,7 @@ function ResultsPage() {
               height: "70vh",
             }}
           >
-            {places.map((p) => {
+            {places.map((p) => { //maps through places after places state is updated from fetch request
               return (
                 <motion.div>
                   <RestaurantCard
