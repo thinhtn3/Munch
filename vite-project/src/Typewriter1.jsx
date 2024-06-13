@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./Typewriter.css"; // Import the CSS for styling
+import "./Typewriter.css";
 
 const Typewriter = ({
   text1 = "Hungry?",
@@ -31,19 +31,19 @@ const Typewriter = ({
   }, [index1, text1.length, index2, text2.length, speed]);
 
   return (
-    <div
+    <div className="Text"
       style={{
         display: "flex",
         flexDirection: "column",
         justifyContent: " center",
+        alignItems: "center",
         width: "97.5vw",
+        // padding: "0em 1.5em"
       }}
     >
       <h2
         style={{
           fontWeight: "400",
-          backgroundImage:
-            "linear-gradient(150deg, rgba(255,255,255,1) 0%, rgba(255,166,0,1) 69%);",
         }}
       >
         {text1.substring(0, index1)}

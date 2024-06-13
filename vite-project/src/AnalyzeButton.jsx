@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import PulseLoader from "react-spinners/PulseLoader";
+import BarLoader from "react-spinners/BarLoader";
 import "./AnalyzeButton.css";
 
 export default function AnalyzeButton({ imgFile, geolocation }) {
@@ -8,14 +8,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
 
   // Handles image upload
   const uploadImage = async () => {
-    //Everytime image is sent to server, loading is set to true and redirect is set to false
     setLoading(true);
-
-    // Timeout set to account for API get requests
-    setTimeout(() => {
-      setLoading(false); // False to remove loading animation
-      location.href = "/result/"; // Move redirection here
-    }, 6000); // Adjust the duration as needed
 
     // Create a new formData to be sent to server (includes a file and text)
     const formData = new FormData();
@@ -25,7 +18,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
     try {
       // Sends form data to endpoint /upload
       const response = await axios.post(
-        "http://localhost:8080/upload",
+        "http://192.168.4.108:8080/upload", // changeback to localhost before push (use ipv4 if want to test on other local network device)
         formData,
         {
           headers: {
@@ -33,28 +26,36 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
           },
         }
       );
-      console.log(response.data); // Handle the response from the server here
+      if (response.status === 200) {
+        setLoading(false);
+        location.href = "/result/";
+      }
     } catch (error) {
       console.error("Error uploading image:", error);
     }
   };
 
   return (
-    <div className="displayImage">
-      {/* Display Images */}
-      <img
-        src={URL.createObjectURL(imgFile)}
-        alt="Preview"
-        style={{ width: "200px", height: "auto" }}
-      />
-
-      {/* Use ternary operator (?) conditional where if redirect === false then upload button appears */}
-      {/*  else redirect button appears */}
-
+    <div
+      style={{
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+      }}
+    >
       <button type="button" onClick={uploadImage}>
         Find Restaurants with AI!
       </button>
-      {loading && <PulseLoader color="#36d7b7" />}
+      {loading && <BarLoader color='white' style={{ marginBottom: "1em"}} />}
+
+      <div className="displayImage">
+        <img
+          src={URL.createObjectURL(imgFile)}
+          alt="Preview"
+          style={{ width: "200px", height: "auto" }}
+        />
+      </div>
     </div>
   );
 }

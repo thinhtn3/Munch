@@ -9,7 +9,6 @@ export default function LocationForm() {
   // Function to set Geolocation (update state) when place is clicked on
   const handlePlaceSelected = (place) => {
     setGeolocation(place.formatted_address);
-    console.log(place.formatted_address);
   };
 
   // Prevent default behavior of submit

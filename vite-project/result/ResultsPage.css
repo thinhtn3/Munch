@@ -9,6 +9,7 @@ body {
   .carousel {
     display: flex;
     flex-direction: column;
+    overflow: scroll;
   }
   .innerCarousel {
     display: flex;
@@ -19,3 +20,4 @@ body {
     /* justify-content: center; */
   }
 }
+

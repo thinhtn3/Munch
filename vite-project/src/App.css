@@ -3,8 +3,8 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
-  height: 100%;
-  overflow-y: hidden;
+  height: 90%;
+  /* overflow-y: hidden; */
   overflow-x: hidden;
   opacity: 1;
 }
@@ -73,11 +73,12 @@
 }
 
 .background {
-  margin: 0px 0px;
-  display: flex;
-  width: 100vw;
   height: 100vh;
   position: relative;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  padding: 2em 1em ;
 }
 
 .background::before {
@@ -88,4 +89,18 @@
   opacity: 0.15;
   inset: 0;
   z-index: -1; /* Ensure it is behind the content */
+}
+
+@media screen and (max-device-height: 710) {
+  #root {
+    overflow-y: scroll;
+  }
+  .background {
+    padding: 2em 0em;
+  }
+}
+@media screen and (min-device-height: 711) {
+  #root {
+    overflow-y: hidden;
+  }
 }

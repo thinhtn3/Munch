@@ -50,7 +50,6 @@ const run = async (filePath) => {
     const text = response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
     jsonData = JSON.parse(cleanText);
-    console.log(jsonData.food_name.toLowerCase().replace(" ", "%20")); // account for spaces with %20 to be used in get API request
 
     const config = {
       headers: {
@@ -64,11 +63,11 @@ const run = async (filePath) => {
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-    console.log(
-      `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonData.food_name
-        .toLowerCase()
-        .replace(" ", "%20")}&sort_by=review_count`
-    );
+    // console.log(
+    //   `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonData.food_name
+    //     .toLowerCase()
+    //     .replace(" ", "%20")}&sort_by=review_count`
+    // );
 
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
@@ -89,7 +88,6 @@ const run = async (filePath) => {
         phone_number: business.display_phone,
       };
     });
-    console.log(businesses[0]);
     return businesses;
   } catch (error) {
     console.error("An error occurred:", error);
@@ -100,17 +98,20 @@ app.post("/upload", upload.single("file"), async (req, res) => {
   if (!req.file) {
     console.log("This shit dont work");
   } else {
+    console.log("post request made");
     const filePath = req.file.path;
-    console.log(filePath);
     location = req.body.text;
     jsonData = await run(filePath);
+    console.log("completed");
+    res.status(200).end(); //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
   }
 });
 
 app.get("/fetch", async (req, res) => {
+  // console.log(businesses)
   res.json(businesses);
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`App listening on ${process.env.PORT} test.js`);
 });

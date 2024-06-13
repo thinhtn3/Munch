@@ -15,8 +15,11 @@ function ResultsPage() {
 
   const getData = async () => {
     try {
-      const response = await axios.get("http://localhost:8080/fetch");
-      setPlaces(response.data); //update State with the array of information we .json in express server
+      const response = await axios.get("http://192.168.4.108:8080/fetch");
+      if (response.data) {
+        console.log(response.data);
+        setPlaces(response.data); //update State with the array of information we .json in express server
+      }
     } catch (e) {
       console.log(e);
     }
@@ -47,7 +50,7 @@ function ResultsPage() {
           animate={{ x: 0 }}
           className="carousel"
           style={{
-            overflow: "hidden",
+            // overflow: "hidden",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
@@ -62,7 +65,7 @@ function ResultsPage() {
             style={{
               display: "flex",
               maxWidth: "100%", // Ensure it doesn't overflow the viewport
-              height: "75vh",
+              height: "70vh",
             }}
           >
             {places.map((p) => {
