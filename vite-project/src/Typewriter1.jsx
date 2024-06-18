@@ -71,7 +71,7 @@ const Typewriter = ({
           width: "",
         }}
       >
-        Simply upload a photo of your favorite dish and get a curated list of
+        Simply enter a location, upload a photo of your favorite dish and get a curated list of
         nearby restaurants that serve that delicious dish.
       </p>
     </div>
