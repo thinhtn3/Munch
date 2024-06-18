@@ -68,7 +68,7 @@ const run = async (filePath) => {
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-    console.log(resp[0])
+    console.log(resp.data.businesses[0])
 
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
@@ -109,10 +109,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     } else {
       res.status(404).send("THIS SHIT IS NOT FOOD");
     }
-
-    // console.log("completed");
-    // res.status(200).end(); //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
-  } //sends status 200 to let clientside know they can redirect to /results
+  } 
 });
 
 app.get("/fetch", async (req, res) => {
