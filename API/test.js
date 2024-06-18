@@ -68,7 +68,7 @@ const run = async (filePath) => {
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
-    console.log(resp);
+    console.log(resp[0])
 
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
