@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import CarouselButton from "./CarouselButton";
 
 function ResultsPage() {
+  let i = 0;
   const [places, setPlaces] = useState([]);
   const [width, setWidth] = useState(0);
   const [x, setX] = useState(0);
@@ -50,7 +51,6 @@ function ResultsPage() {
           animate={{ x: 0 }}
           className="carousel"
           style={{
-            overflow: "hidden",
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
@@ -68,14 +68,11 @@ function ResultsPage() {
               height: "70vh",
             }}
           >
-            {places.map((p) => { //maps through places after places state is updated from fetch request
+            {places.map((p) => {
+              //maps through places after places state is updated from fetch request
               return (
-                <motion.div>
-                  <RestaurantCard
-                    key={p.id}
-                    {...p}
-                    style={{ minWidth: "250px" }}
-                  />
+                <motion.div key={p.id}>
+                  <RestaurantCard {...p} style={{ minWidth: "250px" }} />
                 </motion.div>
               );
             })}

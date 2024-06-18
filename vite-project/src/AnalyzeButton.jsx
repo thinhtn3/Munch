@@ -18,7 +18,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
     try {
       // Sends form data to endpoint /upload
       const response = await axios.post(
-        "http://192.168.4.108:8080/api/upload", // changeback to localhost before push (use ipv4 if want to test on other local network device)
+        "http://localhost:8080/api/upload", // changeback to localhost before push (use ipv4 if want to test on other local network device)
         formData,
         {
           headers: {

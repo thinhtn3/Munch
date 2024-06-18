@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const fs = require("fs");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" }); // gemini-pro-vision gemini-1.5-pro-latest
+const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" }); // gemini-pro-vision gemini-1.5-pro-latest or gemini-1.5-flash-latest free or gemini-pro-vision deprecated soon
 const express = require("express");
 const axios = require("axios");
 const multer = require("multer");
@@ -59,11 +59,16 @@ const run = async (filePath) => {
       },
     };
     const resp = await axios.get(
-      `https://api.yelp.com/v3/businesses/search?location=${location}&term=${jsonGoogle.food_name
+      `https://api.yelp.com/v3/businesses/search?location=${location
+        .toLowerCase()
+        .replace(" ", "%20")}&term=${jsonGoogle.food_name
+        .toLowerCase()
+        .replace(" ", "%20")}%20${jsonGoogle.cuisine_type
         .toLowerCase()
         .replace(" ", "%20")}&sort_by=review_count`,
       config
     );
+    console.log(resp);
 
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
@@ -99,9 +104,10 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     location = req.body.text;
     postResult = await run(filePath);
     if (postResult) {
-      res.status(200).end();
+      res.status(200).end(); //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
+                            //sends status 200 to let clientside know they can redirect to /results
     } else {
-      res.status(404).send('THIS SHIT IS NOT FOOD')
+      res.status(404).send("THIS SHIT IS NOT FOOD");
     }
 
     // console.log("completed");
