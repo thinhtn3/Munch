@@ -65,7 +65,7 @@ const run = async (filePath) => {
         .toLowerCase()
         .replace(" ", "%20")}%20${jsonGoogle.cuisine_type
         .toLowerCase()
-        .replace(" ", "%20")}&sort_by=review_count`,
+        .replace(" ", "%20")}&sort_by=best_match`,
       config
     );
     console.log(resp.data.businesses[0])
