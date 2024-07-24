@@ -3,7 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 const fs = require("fs");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
-const model = genAI.getGenerativeModel({ model: "gemini-pro-vision" }); // gemini-pro-vision gemini-1.5-pro-latest or gemini-1.5-flash-latest free or gemini-pro-vision deprecated soon
+const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" }); // gemini-pro-vision gemini-1.5-pro-latest or gemini-1.5-flash-latest free or gemini-pro-vision deprecated soon
 const express = require("express");
 const axios = require("axios");
 const multer = require("multer");
