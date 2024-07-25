@@ -30,7 +30,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
       if (response.status === 200) {
         setLoading(false);
         location.href = "/result/";
-      }
+      } 
     } catch (error) {
       console.log("404");
       setLoading(false);

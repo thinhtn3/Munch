@@ -68,7 +68,8 @@ const run = async (filePath) => {
         .replace(" ", "%20")}&sort_by=best_match`,
       config
     );
-    console.log(resp.data.businesses[0])
+    console.log(process.env.YELP_API_KEY)
+    // console.log(resp.data.businesses[0])
 
     // Maps through response from Yelp and returns an array of objects with information we need
     businesses = resp.data.businesses.map((business) => {
