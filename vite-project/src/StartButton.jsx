@@ -8,6 +8,7 @@ export default function StartButton({ geolocation }) {
   // Display image after uploading
   const handleImageChange = (e) => {
     e.preventDefault();
+    console.log(e.target.files)
     let file = e.target.files[0];
     if (file) {
       setImageFile(file);
