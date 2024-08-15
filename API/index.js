@@ -4,7 +4,6 @@ const express = require("express");
 const multer = require("multer");
 const { processImage } = require("./gemini")
 const { getYelpData } = require("./yelp")
-
 const app = express();
 app.use(express.json());
 app.use(cors()); // This will allow all domains
@@ -22,7 +21,7 @@ const upload = multer({ storage: storage });
 
 app.post("/api/upload", upload.single("file"), async (req, res) => {
   if (!req.file) {
-    console.log("This shit dont work");
+    console.log("There is no file");
   } else {
     console.log("post request made");
     const filePath = req.file.path;
