@@ -41,7 +41,7 @@
     "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start:backend": "cd API && npm start",
     "start:frontend": "cd vite-project && npm run dev",
-    "installDep": "cd vite-project && npm i && cd API && npm i"
+    "install-all": "npm install && cd vite-project && npm install && cd ../API && npm install"
   },
   "author": "",
   "license": "ISC"
