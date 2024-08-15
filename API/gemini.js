@@ -26,8 +26,8 @@ const processImage = async (filePath) => {
     const response = result.response;
     const text = response.text();
     const cleanText = text.replace(/```json|```/g, "").trim();
-    console.log(jsonGoogle);
-    return jsonGoogle = JSON.parse(cleanText);
+    jsonGoogle = JSON.parse(cleanText);
+    return jsonGoogle
   } catch (e) {
     console.log(e);
   }

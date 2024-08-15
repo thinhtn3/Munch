@@ -27,7 +27,7 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     const filePath = req.file.path;
     geminiData = await processImage(filePath)
     location = req.body.text;
-    yelpResult = getYelpData(geminiData, location);
+    yelpResult = await getYelpData(geminiData, location);
     if (yelpResult) {
       res.status(200).end(); //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
                             //sends status 200 to let clientside know they can redirect to /results
