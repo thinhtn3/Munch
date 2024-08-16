@@ -8,8 +8,13 @@ export default function LocationForm() {
 
   // Function to set Geolocation (update state) when place is clicked on
   const handlePlaceSelected = (place) => {
-    setGeolocation(place.formatted_address);
+    setGeolocation((place.formatted_address));
   };
+
+  const updateForm = (e) => {
+    let newValue = e.target.value;
+    setGeolocation(newValue)
+  }
 
   // Prevent default behavior of submit
   const handleSubmit = async (e) => {
@@ -26,15 +31,16 @@ export default function LocationForm() {
             width: "300px",
             fontSize: "1.25em",
             textAlign: "center",
-            width: '330px'
+            width: "330px",
           }}
+          value ={geolocation}
           className="inputBox"
           apiKey={import.meta.env.VITE_GOOGLE_PLACES_API_KEY}
           types={["establishment"]}
+          onChange={updateForm}
           onPlaceSelected={handlePlaceSelected}
         />
       </form>
-
       <StartButton geolocation={geolocation} />
     </section>
   );

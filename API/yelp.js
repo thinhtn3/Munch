@@ -1,7 +1,7 @@
 const axios = require("axios");
 
 const getYelpData = async (jsonGoogle, location) => {
-  console.log(jsonGoogle)
+  
   let businesses = [];
   const config = {
     headers: {
@@ -19,7 +19,6 @@ const getYelpData = async (jsonGoogle, location) => {
       .replace(" ", "%20")}&sort_by=best_match`,
     config
   );
-  // console.log(resp.data.businesses[0])
 
   // Maps through response from Yelp and returns an array of objects with information we need
   businesses = resp.data.businesses.map((business) => {
