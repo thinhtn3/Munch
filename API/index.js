@@ -54,6 +54,10 @@ app.get("/fetch", async (req, res) => {
   res.json(yelpResult); //
 });
 
+app.get("/test", (req,res) => {
+  res.send("yes")
+})
+
 app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`App listening on ${process.env.PORT} index.js`);
 });
