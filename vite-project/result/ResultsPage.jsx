@@ -16,7 +16,8 @@ function ResultsPage() {
   const getData = async () => {
     try {
       // const response = await axios.get("https://snapcuisine.onrender.com/fetch");
-      const response = await axios.get("http://localhost:8080/fetch");
+      // const response = await axios.get("http://localhost:8080/fetch");
+      const response = await axios.get("http://munch.us-west-1.elasticbeanstalk.com//fetch");
       if (response.data) {
         console.log(response.data);
         setPlaces(response.data); //update State with the array of information we .json in express server
