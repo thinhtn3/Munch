@@ -16,8 +16,8 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
     formData.append("text", geolocation);
     try {
       const response = await axios.post(
-        // "http://localhost:8080/api/upload",
-        "https://snapcuisine.onrender.com/api/upload", // changeback to localhost before push (use ipv4 if want to test on other local network device)
+        "http://localhost:8080/api/upload",
+        // "https://snapcuisine.onrender.com/api/upload", // changeback to localhost before push (use ipv4 if want to test on other local network device)
         formData,
         {
           headers: {
