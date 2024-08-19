@@ -10,9 +10,10 @@ phases:
   build:
     commands:
       - echo Build started on `date`
+      - cd API
       - npm start # or any other build command
 
 artifacts:
   files:
-    - '**/*'
+    - "**/*"
   base-directory: API
