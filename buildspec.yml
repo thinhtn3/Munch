@@ -4,7 +4,6 @@ phases:
   install:
     commands:
       - echo Installing dependencies...
-      - cd API
       - npm install # or pip install -r requirements.txt for Python
 
   build:
@@ -18,4 +17,3 @@ phases:
 artifacts:
   files:
     - "**/*"
-  base-directory: API

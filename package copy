@@ -38,13 +38,10 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "install-all": "npm install && cd vite-project && npm install && cd ../API && npm install",
-    "build:frontend": "cd vite-project && npm install && vite build",
-    "build:backend": "cd API && npm install && npm start",
-    "build": "npm run build:frontend && npm run build:backend",
+    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\"",
     "start:backend": "cd API && npm start",
     "start:frontend": "cd vite-project && npm run dev",
-    "start": "concurrently \"npm run start:backend\" \"npm run start:frontend\""
+    "install-all": "npm install && cd vite-project && npm install && cd ../API && npm install"
   },
   "author": "",
   "license": "ISC"
