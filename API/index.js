@@ -41,10 +41,10 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
           //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
             //sends status 200 to let clientside know they can redirect to /results
         } catch (e) {
-          res.status(e.response.status).send("Something wrong while fetching Yelp, please ensure that you entered a valid location and a valid photo of food.");
+          res.status(e.response.status).send("Something wrong while fetching Yelp, please ensure that you entered a valid location.");
         }
       } else {
-        res.status(400).send("Use the auto suggested location");
+        res.status(400).send("Location input can not be empty!");
       }
     }
   }
