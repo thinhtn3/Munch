@@ -20,6 +20,8 @@ const getYelpData = async (jsonGoogle, location) => {
     config
   );
 
+  businesses.push(jsonGoogle)
+
   // Maps through response from Yelp and returns an array of objects with information we need
   businesses = resp.data.businesses.map((business) => {
     return {
