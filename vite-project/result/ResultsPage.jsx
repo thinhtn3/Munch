@@ -5,19 +5,17 @@ import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
 import BackButton from "./BackButton";
 import { motion } from "framer-motion";
-require("dotenv").config();
 
 function ResultsPage() {
-  let i = 0;
   const [places, setPlaces] = useState([]);
   const [width, setWidth] = useState(0);
-  const [x, setX] = useState(0);
   const carousel = useRef();
+  const serverEndPoint = import.meta.env.VITE_SERVER_END_POINT;
 
   const getData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.SERVER_END_POINT}/fetch"`
+        `${serverEndPoint}/fetch`
       );
       if (response.data) {
         console.log(response.data);

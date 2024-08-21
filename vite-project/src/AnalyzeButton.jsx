@@ -6,8 +6,10 @@ import "./AnalyzeButton.css";
 export default function AnalyzeButton({ imgFile, geolocation }) {
   let [loading, setLoading] = useState(false);
   console.log(geolocation);
+
   // Handles image upload
   const uploadImage = async () => {
+    const serverEndPoint = import.meta.env.VITE_SERVER_END_POINT;
     setLoading(true);
 
     // Create a new formData to be sent to server (includes a file and text)
@@ -16,7 +18,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
     formData.append("text", geolocation);
     try {
       const response = await axios.post(
-        `${process.env.SERVER_END_POINT}/api/upload`,
+        `${serverEndPoint}/api/upload`,
         formData,
         {
           headers: {
