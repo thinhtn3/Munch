@@ -5,7 +5,7 @@ import "./AnalyzeButton.css";
 
 export default function AnalyzeButton({ imgFile, geolocation }) {
   let [loading, setLoading] = useState(false);
-  console.log(geolocation)
+  console.log(geolocation);
   // Handles image upload
   const uploadImage = async () => {
     setLoading(true);
@@ -16,9 +16,7 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
     formData.append("text", geolocation);
     try {
       const response = await axios.post(
-        // "http://localhost:8080/api/upload",
-        // "http://munch.us-west-1.elasticbeanstalk.com/api/upload",
-        "https://snapcuisine.onrender.com/api/upload", // changeback to localhost before push (use ipv4 if want to test on other local network device)
+        `${process.env.SERVER_END_POINT}/api/upload`,
         formData,
         {
           headers: {
@@ -33,7 +31,8 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
       }
     } catch (error) {
       setLoading(false);
-      if (error.response.status === 400) { //Be sure to use error.response status because response.status is not defined
+      if (error.response.status === 400) {
+        //Be sure to use error.response status because response.status is not defined
         alert(error.response.data);
       }
     }

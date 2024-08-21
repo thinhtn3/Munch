@@ -5,6 +5,7 @@ import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
 import BackButton from "./BackButton";
 import { motion } from "framer-motion";
+require("dotenv").config();
 
 function ResultsPage() {
   let i = 0;
@@ -15,9 +16,9 @@ function ResultsPage() {
 
   const getData = async () => {
     try {
-      const response = await axios.get("https://snapcuisine.onrender.com/fetch");
-      // const response = await axios.get("http://localhost:8080/fetch");
-      // const response = await axios.get("http://munch.us-west-1.elasticbeanstalk.com/fetch");
+      const response = await axios.get(
+        `${process.env.SERVER_END_POINT}/fetch"`
+      );
       if (response.data) {
         console.log(response.data);
         setPlaces(response.data); //update State with the array of information we .json in express server
