@@ -9,7 +9,7 @@ import Typewriter from "./Typewriter1";
 export default function App() {
   return (
     <>
-      <div className="background">
+ 
         <div className="column">
           <div className="logo-row">
             <img src={photo} className="logo" alt="" />
@@ -24,7 +24,7 @@ export default function App() {
           </div>
           <Footer />
         </div>
-      </div>
+
     </>
   );
 }

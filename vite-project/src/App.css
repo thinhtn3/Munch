@@ -72,25 +72,6 @@
   padding: 2em;
 }
 
-.background {
-  height: 100vh;
-  position: relative;
-  box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  padding: 2em 1em ;
-}
-
-.background::before {
-  content: "";
-  background-image: url(./assets/12.jpeg);
-  background-size: cover;
-  position: absolute;
-  opacity: 0.15;
-  inset: 0;
-  z-index: -1; /* Ensure it is behind the content */
-}
-
 @media screen and (max-device-height: 710) {
   #root {
     overflow-y: scroll;

@@ -13,7 +13,7 @@
   }
 }
 
-h2, h3 {
+/* h2, h3 {
   background-image: linear-gradient(
     150deg,
     rgba(255, 255, 255, 1) 0%,
@@ -21,4 +21,4 @@ h2, h3 {
   );
   background-clip: text;
   color: transparent;
-}
+} */

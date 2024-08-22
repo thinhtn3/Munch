@@ -1,22 +1,9 @@
-import React, { useState } from "react";
 import "./StartButton.css";
-import AnalyzeButton from "./AnalyzeButton";
 
-export default function StartButton({ geolocation }) {
-  const [imageFile, setImageFile] = useState(null);
-
-  // Display image after uploading
-  const handleImageChange = (e) => {
-    e.preventDefault();
-    console.log(e.target.files)
-    let file = e.target.files[0];
-    if (file) {
-      setImageFile(file);
-    }
-  };
-
+// export default function StartButton({ geolocation }) {
+export default function StartButton({ handleImageChange, imgFile }) {
   return (
-    <div style={{ width: "100%", display: 'flex', justifyContent:'center'}}>
+    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="libraryInput">
           <input
@@ -34,10 +21,18 @@ export default function StartButton({ geolocation }) {
             Take Photo
           </button>
         </label>
+        <div className="displayImage">
+          {imgFile ? (
+            <img
+              src={URL.createObjectURL(imgFile)}
+              alt="Preview"
+              style={{ width: "200px", height: "auto" }}
+            />
+          ) : (
+            ''
+          )}
+        </div>
 
-        {imageFile && ( // if imageFile !null display analyze button
-          <AnalyzeButton imgFile={imageFile} geolocation={geolocation} />
-        )}
       </form>
     </div>
   );

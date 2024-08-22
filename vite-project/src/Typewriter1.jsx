@@ -31,49 +31,59 @@ const Typewriter = ({
   }, [index1, text1.length, index2, text2.length, speed]);
 
   return (
-    <div className="Text"
+    <div
+      className="Text"
       style={{
         display: "flex",
         flexDirection: "column",
-        justifyContent: " center",
         alignItems: "center",
-        width: "97.5vw",
+        width: "97.7vw",
         // padding: "0em 1.5em"
       }}
     >
-      <h2
+      <div
         style={{
-          fontWeight: "400",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-start",
+          padding:"1em 4em"
         }}
       >
-        {text1.substring(0, index1)}
-        {showCursor && index1 < text1.length && (
-          <span className="cursor">|</span>
-        )}
-      </h2>
-      {/* The h3 element now exists from the start with transparent text to maintain layout */}
-      <h3 style={{ fontWeight: "400", marginBottom: "0px" }}>
-        {
-          index1 === text1.length
-            ? text2.substring(0, index2)
-            : "\u00A0" /* Non-breaking space */
-        }
-        {showCursor && index2 < text2.length && (
-          <span className="cursor">|</span>
-        )}
-      </h3>
+        <h2
+          style={{
+            fontWeight: "600",
+            fontSize: "6em",
+          }}
+        >
+          {text1.substring(0, index1)}
+          {showCursor && index1 < text1.length && (
+            <span className="cursor">|</span>
+          )}
+        </h2>
+        {/* The h3 element now exists from the start with transparent text to maintain layout */}
+        <h3 style={{ fontWeight: "600", marginBottom: "0px", fontSize: "5em" }}>
+          {
+            index1 === text1.length
+              ? text2.substring(0, index2)
+              : "\u00A0" /* Non-breaking space */
+          }
+          {showCursor && index2 < text2.length && (
+            <span className="cursor">|</span>
+          )}
+        </h3>
 
-      <p
-        style={{
-          fontWeight: "100",
-          fontSize: "1.3em",
-          paddingBottom: "1em",
-          width: "",
-        }}
-      >
-        Simply enter a location, upload a photo of your favorite dish and get a curated list of
-        nearby restaurants that serve that delicious dish.
-      </p>
+        <p
+          style={{
+            fontWeight: "400",
+            fontSize: "1.5em",
+            paddingBottom: "1em",
+            width: "",
+          }}
+        >
+          Simply enter a location, upload a photo of your favorite dish and get
+          a curated list of nearby restaurants that serve that delicious dish.
+        </p>
+      </div>
     </div>
   );
 };

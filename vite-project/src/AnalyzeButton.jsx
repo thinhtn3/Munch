@@ -2,19 +2,17 @@ import axios from "axios";
 import React, { useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
 import "./AnalyzeButton.css";
+import searchIcon from "./assets/search_icon.png";
 
-export default function AnalyzeButton({ imgFile, geolocation }) {
+export default function AnalyzeButton({ imgFile, geolocation, category }) {
   let [loading, setLoading] = useState(false);
 
   // Handles image upload
-  const uploadImage = async () => {
+  const upload2Server = async (type, data) => {
     const serverEndPoint = import.meta.env.VITE_SERVER_END_POINT;
-    setLoading(true);
-
-    // Create a new formData to be sent to server (includes a file and text)
     const formData = new FormData();
-    formData.append("file", imgFile);
-    formData.append("text", geolocation);
+    formData.append(type, data);
+    formData.append("location", geolocation);
     try {
       const response = await axios.post(
         `${serverEndPoint}/api/upload`,
@@ -31,16 +29,30 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
         location.href = "/result/";
       }
 
-        setLoading(false);
-        location.href = "/result/";
-
+      setLoading(false);
+      location.href = "/result/";
     } catch (error) {
       setLoading(false);
       if (error.response.status === 400) {
         //Be sure to use error.response status because response.status is not defined
         alert(error.response.data);
       }
-      console.log(error)
+      console.log(error);
+    }
+  };
+
+  const validation = async () => {
+    let type;
+    setLoading(true);
+    if (imgFile && category) {
+      alert("use one or the other");
+      setLoading(false);
+    } else if (category) {
+      type = "search_q";
+      upload2Server(type, category);
+    } else if (imgFile) {
+      type = "file";
+      upload2Server(type, imgFile);
     }
   };
 
@@ -53,18 +65,10 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
         alignItems: "center",
       }}
     >
-      <button type="button" onClick={uploadImage}>
-        Find Restaurants with AI!
+      <button type="button" onClick={validation}>
+        <img src={searchIcon} alt="search icon" id="searchIcon" />
       </button>
       {loading && <BarLoader color="white" style={{ marginBottom: "1em" }} />}
-
-      <div className="displayImage">
-        <img
-          src={URL.createObjectURL(imgFile)}
-          alt="Preview"
-          style={{ width: "200px", height: "auto" }}
-        />
-      </div>
     </div>
   );
 }

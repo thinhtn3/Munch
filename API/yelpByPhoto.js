@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const getYelpData = async (jsonGoogle, location) => {
+const yelpByPhoto = async (jsonGoogle, location) => {
   
   let businesses = {foodData: jsonGoogle, restaurant: [], };
   const config = {
@@ -14,7 +14,7 @@ const getYelpData = async (jsonGoogle, location) => {
       .toLowerCase()
       .replace(" ", "%20")}&term=${jsonGoogle.food_name
       .toLowerCase()
-      .replace(" ", "%20")}%20${jsonGoogle.cuisine_type
+      .replace(" ", "%20")}&${jsonGoogle.cuisine_type
       .toLowerCase()
       .replace(" ", "%20")}&sort_by=best_match`,
     config
@@ -45,4 +45,4 @@ const getYelpData = async (jsonGoogle, location) => {
   return businesses;
 };
 
-exports.getYelpData = getYelpData;
+exports.yelpByPhoto = yelpByPhoto;
