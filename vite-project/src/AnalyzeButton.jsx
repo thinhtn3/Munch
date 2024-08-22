@@ -5,7 +5,6 @@ import "./AnalyzeButton.css";
 
 export default function AnalyzeButton({ imgFile, geolocation }) {
   let [loading, setLoading] = useState(false);
-  console.log(geolocation);
 
   // Handles image upload
   const uploadImage = async () => {
@@ -27,16 +26,21 @@ export default function AnalyzeButton({ imgFile, geolocation }) {
         }
       );
       // Sends form data to endpoint /upload
-      if (response.status === 200) {
+      if (response.status !== 200) {
         setLoading(false);
         location.href = "/result/";
       }
+
+        setLoading(false);
+        location.href = "/result/";
+
     } catch (error) {
       setLoading(false);
       if (error.response.status === 400) {
         //Be sure to use error.response status because response.status is not defined
         alert(error.response.data);
       }
+      console.log(error)
     }
   };
 

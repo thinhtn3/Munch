@@ -29,15 +29,15 @@ app.post("/api/upload", upload.single("file"), async (req, res) => {
     const filePath = req.file.path;
     geminiData = await processImage(filePath);
     location = req.body.text;
-
-    if (geminiData.is_food === false) { // checks to see if item is food
+    yelpResult = await getYelpData(geminiData, location);
+    if (geminiData.is_food === false && geminiData.is_drink === false) { // checks to see if item is food
       res.status(400).send("Please enter a valid food!");
     } else {
       if (location) { // check if the location input is filled
         try {
           yelpResult = await getYelpData(geminiData, location);
           yelpResult && res.status(200).end();  // check if there is yelpResults
-          
+
           //make sure to include .json(), .send(), or .end() to complete the response process. .status alone does not actually send response to client
             //sends status 200 to let clientside know they can redirect to /results
         } catch (e) {
@@ -54,9 +54,9 @@ app.get("/fetch", async (req, res) => {
   res.json(yelpResult); //
 });
 
-app.get("/test", (req,res) => {
-  res.send("yes")
-})
+app.get("/test", (req, res) => {
+  res.send("yes");
+});
 
 app.listen(process.env.PORT, "0.0.0.0", () => {
   console.log(`App listening on ${process.env.PORT} index.js`);

@@ -7,7 +7,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 const processImage = async (filePath) => {
   try {
     const prompt =
-      "return in JSON without markdown syntax, is_food, the food_name, and cuisine_type, based on the image provided"; // prompt to be sent to Gemini API
+      "return in JSON without markdown syntax, is_food, is_drink, the food_name, and cuisine_type, based on the image provided"; // prompt to be sent to Gemini API
     // Read the image file and convert it to Base64
     //Read up Gemini Documentation (example of code is there)
     const imageBuffer = fs.readFileSync(filePath);

@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const getYelpData = async (jsonGoogle, location) => {
   
-  let businesses = [];
+  let businesses = {foodData: jsonGoogle, restaurant: [], };
   const config = {
     headers: {
       Authorization: `Bearer ${process.env.YELP_API_KEY}`,
@@ -20,10 +20,10 @@ const getYelpData = async (jsonGoogle, location) => {
     config
   );
 
-  businesses.push(jsonGoogle)
+
 
   // Maps through response from Yelp and returns an array of objects with information we need
-  businesses = resp.data.businesses.map((business) => {
+  businesses.restaurant = resp.data.businesses.map((business) => {
     return {
       food_name: jsonGoogle.food_name,
       id: business.id,
@@ -41,6 +41,7 @@ const getYelpData = async (jsonGoogle, location) => {
       phone_number: business.display_phone,
     };
   });
+  // console.log(businesses.foodData)
   return businesses;
 };
 

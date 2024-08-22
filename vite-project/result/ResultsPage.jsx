@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 
 function ResultsPage() {
   const [places, setPlaces] = useState([]);
+  const [foodData, setFoodData] = useState({})
   const [width, setWidth] = useState(0);
   const carousel = useRef();
   const serverEndPoint = import.meta.env.VITE_SERVER_END_POINT;
@@ -17,9 +18,9 @@ function ResultsPage() {
       const response = await axios.get(
         `${serverEndPoint}/fetch`
       );
-      if (response.data) {
-        console.log(response.data);
-        setPlaces(response.data); //update State with the array of information we .json in express server
+      if (response.data) { 
+        setFoodData(response.data.foodData)
+        setPlaces(response.data.restaurant); //update State with the array of information we .json in express server
       }
     } catch (e) {
       console.log(e);
@@ -41,6 +42,9 @@ function ResultsPage() {
       <div className="background">
         <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
           Restaurant Results
+        </motion.h1>
+        <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
+          Displaying results for {foodData.cuisine_type} {foodData.food_name}
         </motion.h1>
         <nav className="backNav">
           <BackButton />
