@@ -19,12 +19,14 @@
   display: flex;
   font-size: 7px;
   justify-content: center;
+
 }
 /*  */
 .logo-row img {
   min-width: 40px;
   min-height: 40px;
   align-self: center;
+  margin: 0px 8px;
 }
 
 .slogan-column {

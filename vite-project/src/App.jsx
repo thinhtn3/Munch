@@ -1,7 +1,6 @@
 import { React } from "react";
-import photo from "./assets/photo.png";
+import munchLogo from "../assets/munchLogo.png"
 import "./App.css";
-import StartButton from "./StartButton";
 import LocationForm from "./LocationForm";
 import Footer from "./Footer";
 import Typewriter from "./Typewriter1";
@@ -12,8 +11,8 @@ export default function App() {
  
         <div className="column">
           <div className="logo-row">
-            <img src={photo} className="logo" alt="" />
-            <h1>SnapCuisine</h1>
+            <img src={munchLogo} className="logo" alt="" />
+            <h1>Munch</h1>
           </div>
 
           <div className="slogan-column">

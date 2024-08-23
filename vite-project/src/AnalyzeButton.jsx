@@ -42,17 +42,24 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
   };
 
   const validation = async () => {
-    let type;
-    setLoading(true);
-    if (imgFile && category) {
-      alert("use one or the other");
-      setLoading(false);
-    } else if (category) {
-      type = "search_q";
-      upload2Server(type, category);
-    } else if (imgFile) {
-      type = "file";
-      upload2Server(type, imgFile);
+    if (geolocation) {
+      let type;
+      setLoading(true);
+      if (!imgFile && !category) {
+        alert("No Input Received");
+        setLoading(false);
+      } else if (imgFile && category) {
+        alert("Search for food/cuisine OR Upload a photo");
+        setLoading(false);
+      } else if (category) {
+        type = "search_q";
+        upload2Server(type, category);
+      } else if (imgFile) {
+        type = "file";
+        upload2Server(type, imgFile);
+      }
+    } else {
+      alert("Location can not be empty.");
     }
   };
 

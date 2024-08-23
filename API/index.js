@@ -40,7 +40,6 @@ const yelpSearch = async (res, func) => {
     yelpResult = await func;
     yelpResult && res.status(200).end(); // check if there is yelpResults
   } catch (e) {
-    console.log(e);
     res
       .status(e.response.status)
       .send(
@@ -59,7 +58,6 @@ app.post("/api/upload", upload.any(), async (req, res) => {
   if (!req.files && !req.body.search_q) {
     res.status(400).send("No input received");
   } else if (req.files[0]) {
-    console.log(req.files[0]);
     validated = await photoValidation(req.files[0], res);
     if (validated) {
       yelpSearch(res, yelpByPhoto(validated, location));
@@ -78,5 +76,4 @@ app.get("/test", (req, res) => {
 });
 
 app.listen(process.env.PORT, "0.0.0.0", () => {
-  console.log(`App listening on ${process.env.PORT} index.js`);
 });

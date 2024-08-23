@@ -7,7 +7,7 @@ import AnalyzeButton from "./AnalyzeButton";
 
 export default function LocationForm() {
   // const [geolocation, setGeolocation] = useState("");
-  const [formData, setFormData] = useState({ geolocation: "", category: null });
+  const [formData, setFormData] = useState({ geolocation: "", category: "" });
   const [imageFile, setImageFile] = useState(null);
 
   const handleImageChange = (e) => {
@@ -19,10 +19,6 @@ export default function LocationForm() {
     }
   };
   
-
-  useEffect(() => {
-    console.log(imageFile);
-  }, [imageFile]);
   // Function to set Geolocation (update state) when place is clicked on
   const handlePlaceSelected = (place) => {
     setFormData((current) => {
@@ -36,7 +32,6 @@ export default function LocationForm() {
     setFormData((current) => {
       return { ...current, [selectedName]: newValue };
     });
-    console.log(formData);
   };
 
   // Prevent default behavior of submit
