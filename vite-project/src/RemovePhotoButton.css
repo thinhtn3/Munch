@@ -1,0 +1,10 @@
+#RemovePhotoButton {
+  position: relative;
+  top: 45px;
+  left: 80px;
+  width: 40px;
+  height: 40px;
+  /* height: 60px; */
+  border-radius: 100%;
+  opacity: 0.8;
+}

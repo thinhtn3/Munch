@@ -17,12 +17,6 @@ const yelpByQuery = async (query, location) => {
       &sort_by=best_match`,
     config
   );
-  console.log(`https://api.yelp.com/v3/businesses/search?location=${location
-    .toLowerCase()
-    .replace(" ", "%20")}&term=${query}
-    .toLowerCase()
-    .replace(" ", "%20")}
-    &sort_by=best_match`);
 
   // Maps through response from Yelp and returns an array of objects with information we need
   businesses.restaurant = resp.data.businesses.map((business) => {

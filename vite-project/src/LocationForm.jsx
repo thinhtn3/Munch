@@ -4,6 +4,7 @@ import "./LocationForm.css";
 import Autocomplete from "react-google-autocomplete";
 import AnalyzeButton from "./AnalyzeButton";
 
+
 export default function LocationForm() {
   // const [geolocation, setGeolocation] = useState("");
   const [formData, setFormData] = useState({ geolocation: "", category: null });
@@ -17,6 +18,7 @@ export default function LocationForm() {
       setImageFile(file);
     }
   };
+  
 
   useEffect(() => {
     console.log(imageFile);
@@ -27,7 +29,6 @@ export default function LocationForm() {
       return { ...current, geolocation: place.formatted_address };
     });
   };
-
 
   const updateForm = (e) => {
     const selectedName = e.target.name;
@@ -46,8 +47,8 @@ export default function LocationForm() {
 
   return (
     <section>
-      <div style={{display:"flex"}}>
-        <form onSubmit={handleSubmit} style={{display:"flex"}}>
+      <div style={{ display: "flex" }}>
+        <form onSubmit={handleSubmit} style={{ display: "flex" }}>
           <input
             placeholder="Search any cuisine, food, and drinks "
             name="category"
@@ -66,10 +67,17 @@ export default function LocationForm() {
             onPlaceSelected={handlePlaceSelected}
           />
         </form>
-        <AnalyzeButton imgFile={imageFile} geolocation={formData.geolocation} category={formData.category} />
+        <AnalyzeButton
+          imgFile={imageFile}
+          geolocation={formData.geolocation}
+          category={formData.category}
+        />
       </div>
-      <h4 style={{fontSize:"1.2em"}}>Unsure of what the food is? Upload a photo and let AI find you restaurants</h4>
-      <StartButton handleImageChange={handleImageChange} imgFile={imageFile} />
+      <h4 style={{ fontSize: "1.2em" }}>
+        Unsure of what the food is? Upload a photo and let AI find you
+        restaurants
+      </h4>
+      <StartButton handleImageChange={handleImageChange} imageFile={imageFile} setImageFile={setImageFile} />
     </section>
   );
 }

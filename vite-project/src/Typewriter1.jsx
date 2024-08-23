@@ -39,6 +39,7 @@ const Typewriter = ({
         alignItems: "center",
         width: "97.7vw",
         // padding: "0em 1.5em"
+        margin: "0px 0px",
       }}
     >
       <div
@@ -46,7 +47,8 @@ const Typewriter = ({
           display: "flex",
           flexDirection: "column",
           alignItems: "flex-start",
-          padding:"1em 4em"
+          padding:"1em 4em",
+          margin: "0px 0px",
         }}
       >
         <h2
@@ -78,6 +80,7 @@ const Typewriter = ({
             fontSize: "1.5em",
             paddingBottom: "1em",
             width: "",
+            margin:"0"
           }}
         >
           Simply enter a location, upload a photo of your favorite dish and get

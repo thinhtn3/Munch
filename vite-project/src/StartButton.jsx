@@ -1,7 +1,12 @@
 import "./StartButton.css";
+import RemovePhotoButton from "./RemovePhotoButton";
 
 // export default function StartButton({ geolocation }) {
-export default function StartButton({ handleImageChange, imgFile }) {
+export default function StartButton({
+  handleImageChange,
+  imageFile,
+  setImageFile,
+}) {
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <form onSubmit={(e) => e.preventDefault()}>
@@ -21,18 +26,19 @@ export default function StartButton({ handleImageChange, imgFile }) {
             Take Photo
           </button>
         </label>
-        <div className="displayImage">
-          {imgFile ? (
-            <img
-              src={URL.createObjectURL(imgFile)}
-              alt="Preview"
-              style={{ width: "200px", height: "auto" }}
-            />
-          ) : (
-            ''
-          )}
-        </div>
 
+        {imageFile ? (
+          <div className="displayImage">
+            <RemovePhotoButton setImageFile={setImageFile} />
+            <img
+              src={URL.createObjectURL(imageFile)}
+              alt="Preview"
+              style={{ maxWidth: "100%", width: "150px", height: "auto" }}
+            />
+          </div>
+        ) : (
+          ""
+        )}
       </form>
     </div>
   );
