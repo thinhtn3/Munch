@@ -1,0 +1,43 @@
+.logo-row {
+  display: flex;
+  font-size: 7px;
+  justify-content: space-around;
+  background-color: #ad5d47df;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+/*  */
+.logo-row img {
+  min-width: 40px;
+  min-height: 40px;
+  align-self: center;
+  margin: 0px 8px;
+}
+
+.logo {
+  width: 4em;
+}
+
+#navTitle {
+    font-size: 5em;
+}
+
+#navBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 500px;
+    
+
+}
+
+.navItem {
+    font-size: 4em;
+    list-style: none;
+    cursor: pointer;
+}
+
+.navItem a {
+  color: white;
+}
