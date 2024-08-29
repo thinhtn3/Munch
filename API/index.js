@@ -10,6 +10,8 @@ app.use(express.json());
 app.use(cors()); // This will allow all domains
 let yelpResult;
 let location;
+
+
 //Configure storage for multer (got from multer documentation )
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -32,9 +34,9 @@ const photoValidation = async (file, res) => {
     return geminiData;
   }
 };
+
 const yelpSearch = async (res, func) => {
   console.log("post request made");
-
   // check if the location input is filled
   try {
     yelpResult = await func;
@@ -46,9 +48,7 @@ const yelpSearch = async (res, func) => {
         "Something wrong while fetching Yelp, please ensure that you entered a valid location."
       );
   }
-  //  else {
-  //   res.status(400).send("Location input can not be empty!");
-  // }
+
 };
 
 app.post("/api/upload", upload.any(), async (req, res) => {
@@ -75,5 +75,6 @@ app.get("/test", (req, res) => {
   res.send("yes");
 });
 
-app.listen(process.env.PORT, "0.0.0.0", () => {
+app.listen(process.env.PORT, () => {
+  console.log("server started on 8080")
 });

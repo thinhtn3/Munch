@@ -5,6 +5,7 @@ import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
 import BackButton from "./BackButton";
 import { motion } from "framer-motion";
+import Nav from "./Nav"
 
 function ResultsPage() {
   const [places, setPlaces] = useState([]);
@@ -39,6 +40,7 @@ function ResultsPage() {
 
   return (
     <>
+    <Nav/>
       <div className="background">
         <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
           Restaurant Results

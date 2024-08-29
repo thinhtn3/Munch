@@ -1,14 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
-import App from './App.jsx';
-import './index.css';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import {
+  BrowserRouter
+} from "react-router-dom";
+import App from "./App.jsx";
+import About from "./About.jsx";
+import "./index.css";
+
+// const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <App />,
+//   },
+// ]);
 
 // Use createRoot() to render the root of your application
-ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter> {/* Wrap your entire application with BrowserRouter */}
-    <React.StrictMode>
+ReactDOM.createRoot(document.getElementById("root")).render(
+  <React.StrictMode>
+    <BrowserRouter>
       <App />
-    </React.StrictMode>
-  </BrowserRouter>
+    </BrowserRouter>
+    {/* <RouterProvider router={router} /> */}
+  </React.StrictMode>
 );

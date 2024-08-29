@@ -1,9 +1,9 @@
 .home-column {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   height: 85vh;
-  padding: 6em 0em;
+  margin: 0px 0px;
 }
 
 .slogan-column {

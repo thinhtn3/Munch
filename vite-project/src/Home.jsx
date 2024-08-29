@@ -3,7 +3,7 @@ import Typewriter from "./Typewriter1";
 import "./Home.css";
 export default function Home() {
   return (
-    <section id="home" className="home-column">
+    <section className="home-column" >
       <div className="slogan-column">
         <Typewriter />
         <div className="startButton-center">

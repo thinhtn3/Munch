@@ -31,15 +31,7 @@ function Nav(props) {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <NavHashLink
-                smooth
-                to={`#${item.toLowerCase()}`}
-                style={({ isActive }) => ({
-                  color: isActive ? "black" : "yellow",
-                })}
-              >
-                {item}
-              </NavHashLink>
+              <ListItemText primary={item} />
             </ListItemButton>
           </ListItem>
         ))}
@@ -52,7 +44,7 @@ function Nav(props) {
 
   return (
     <Box sx={{ display: "flex" }}>
-      <AppBar component="nav" sx={{ backgroundColor: "#ad5d47df", padding: "0em 1em" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "#ad5d47df" }}>
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"

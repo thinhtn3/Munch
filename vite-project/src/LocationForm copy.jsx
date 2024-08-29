@@ -3,7 +3,8 @@ import React, { useState } from "react";
 import "./LocationForm.css";
 import Autocomplete from "react-google-autocomplete";
 import AnalyzeButton from "./AnalyzeButton";
-import Button from "@mui/material/Button";
+import Button from '@mui/material/Button';
+
 
 export default function LocationForm() {
   // const [geolocation, setGeolocation] = useState("");
@@ -18,7 +19,7 @@ export default function LocationForm() {
       setImageFile(file);
     }
   };
-
+  
   // Function to set Geolocation (update state) when place is clicked on
   const handlePlaceSelected = (place) => {
     setFormData((current) => {
@@ -41,8 +42,8 @@ export default function LocationForm() {
   };
 
   return (
-    <section id="locationForm">
-      <div style={{ display: "flex" }} id="formSubmit">
+    <section>
+      <div style={{ display: "flex" }}>
         <form onSubmit={handleSubmit} style={{ display: "flex" }}>
           <input
             placeholder="Search any cuisine, food, and drinks "
@@ -68,15 +69,11 @@ export default function LocationForm() {
           category={formData.category}
         />
       </div>
-      <h4>
+      <h4 style={{ fontSize: "1.2em" }}>
         Unsure of what the food is? Upload a photo and let AI find you
         restaurants
       </h4>
-      <StartButton
-        handleImageChange={handleImageChange}
-        imageFile={imageFile}
-        setImageFile={setImageFile}
-      />
+      <StartButton handleImageChange={handleImageChange} imageFile={imageFile} setImageFile={setImageFile} />
     </section>
   );
 }

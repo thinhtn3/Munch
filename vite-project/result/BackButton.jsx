@@ -13,7 +13,6 @@ export default function BackButton() {
         className="backButton"
         onClick={handleClick}
         style={{
-          marginBottom: "1em",
           width: "200px",
           height: "50px",
           borderRadius: "8px",

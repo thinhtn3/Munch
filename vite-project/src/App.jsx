@@ -8,11 +8,11 @@ import Footer from "./Footer";
 
 export default function App() {
   return (
-    <>
+    <section id="home">
       <Nav />
       <Home />
       <About />
       <Footer />
-    </>
+    </section>
   );
 }

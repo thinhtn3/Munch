@@ -10,10 +10,53 @@
   padding: 0em 1em;
   box-sizing: border-box;
   color: rgb(46, 46, 46);
+}
+.inputBox:first-child {
+  margin-right: 2px;
+}
+
+#locationForm h4 {
+  font-size: 1.2em;
 
 }
 
-.inputBox:first-child {
-    position: relative;
-    margin-right: 2px;
+@media screen and (max-width: 745px) {
+  #formSubmit {
+    flex-direction: column;
+  }
+  #formSubmit form {
+    flex-direction: column;
+    align-items: center;
+  }
+  .inputBox {
+    width: 500px;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .inputBox:first-child {
+    margin-right: 0px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .inputBox {
+    width: 450px;
+    height: 45px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .inputBox {
+    width: 350px;
+    height: 35px;
+  }
+  #locationForm h4 {
+    font-size: 0.9em;
+  }
+  #locationForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80vw;
+  }
 }

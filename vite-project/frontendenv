@@ -1,0 +1,6 @@
+`# SERVER_END_POINT = "https://snapcuisine.onrender.com/fetch"
+VITE_SERVER_END_POINT="http://localhost:8080/"
+# SERVER_END_POINT = "http://munch.us-west-1.elasticbeanstalk.com/fetch"
+# VITE_SERVER_END_POINT = "https://munch-server-fjbfw.ondigitalocean.app"
+
+VITE_GOOGLE_PLACES_API_KEY="AIzaSyBYpmLhT6b6jh40aY-d8tdOyU4K_3KZ0Q4"

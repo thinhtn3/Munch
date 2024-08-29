@@ -31,39 +31,16 @@ const Typewriter = ({
   }, [index1, text1.length, index2, text2.length, speed]);
 
   return (
-    <div
-      className="Text"
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        width: "97.7vw",
-        // padding: "0em 1.5em"
-        margin: "0px 0px",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start",
-          padding:"1em 4em",
-          margin: "0px 0px",
-        }}
-      >
-        <h2
-          style={{
-            fontWeight: "600",
-            fontSize: "6em",
-          }}
-        >
+    <div className="Text">
+      <div id="headingContainer">
+        <h2>
           {text1.substring(0, index1)}
           {showCursor && index1 < text1.length && (
             <span className="cursor">|</span>
           )}
         </h2>
         {/* The h3 element now exists from the start with transparent text to maintain layout */}
-        <h3 style={{ fontWeight: "600", marginBottom: "0px", fontSize: "5em" }}>
+        <h3>
           {
             index1 === text1.length
               ? text2.substring(0, index2)
@@ -74,18 +51,10 @@ const Typewriter = ({
           )}
         </h3>
 
-        <p
-          style={{
-            fontWeight: "400",
-            fontSize: "1.5em",
-            paddingBottom: "1em",
-            width: "",
-            margin:"0"
-          }}
-        >
+        {/* <p>
           Simply enter a location, upload a photo of your favorite dish and get
           a curated list of nearby restaurants that serve that delicious dish.
-        </p>
+        </p> */}
       </div>
     </div>
   );

@@ -14,6 +14,7 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
     formData.append(type, data);
     formData.append("location", geolocation);
     try {
+      console.log(serverEndPoint)
       const response = await axios.post(
         `${serverEndPoint}/api/upload`,
         formData,
@@ -72,7 +73,7 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
         alignItems: "center",
       }}
     >
-      <button type="button" onClick={validation}>
+      <button id="analyzeButton" type="button" onClick={validation}>
         <img src={searchIcon} alt="search icon" id="searchIcon" />
       </button>
       {loading && <BarLoader color="white" style={{ marginBottom: "1em" }} />}
