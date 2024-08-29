@@ -6,7 +6,6 @@ import IconButton from "@mui/material/IconButton";
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
@@ -37,6 +36,8 @@ function Nav(props) {
                 style={({ isActive }) => ({
                   color: isActive ? "black" : "yellow",
                 })}
+                // Ensure isActive doesn't get passed to DOM elements
+                isActive={() => false}
               >
                 {item}
               </NavHashLink>
@@ -76,8 +77,9 @@ function Nav(props) {
                   smooth
                   to={`#${item.toLowerCase()}`}
                   style={({ isActive }) => ({
-                    color: isActive ? "white" : "yellow",
+                    color: isActive ? "white" : "white",
                   })}
+                  isActive={() => false} // Prevent isActive from being passed to DOM elements
                 >
                   {item}
                 </NavHashLink>
