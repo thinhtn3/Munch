@@ -11,12 +11,13 @@ import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import munchLogo from "../assets/munchLogo.png";
 import { NavHashLink } from "react-router-hash-link";
-import "./Nav.css";
+import LocationFormResult from "./LocationFormResult";
+import "./NavResult.css";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home"];
 
-function Nav(props) {
+function NavResult(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -32,11 +33,10 @@ function Nav(props) {
             <ListItemButton sx={{ textAlign: "center" }}>
               <NavHashLink
                 smooth
-                to={`#${item.toLowerCase()}`}
+                to={`/#${item.toLowerCase()}`}
                 style={({ isActive }) => ({
                   color: isActive ? "black" : "yellow",
                 })}
-                // Ensure isActive doesn't get passed to DOM elements
                 isActive={() => false}
               >
                 {item}
@@ -57,7 +57,13 @@ function Nav(props) {
         component="nav"
         sx={{ backgroundColor: "#ad5d47df", padding: "0em 1em" }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          id="toolBar"
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+          }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -69,29 +75,39 @@ function Nav(props) {
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
-            <img src={munchLogo} className="logo" alt="" />
-            <h1 id="navTitle">Munch</h1>
+            <img src={munchLogo} className="logo" alt="Munch Logo" />
+            <h1
+              id="navTitle"
+              style={{
+                fontWeight: "800",
+                fontSize: "2.9em",
+                paddingLeft: "0.5em",
+              }}
+            >
+              Munch
+            </h1>
           </div>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.toLowerCase()}>
-                <NavHashLink
-                  smooth
-                  to={`#${item.toLowerCase()}`}
-                  style={({ isActive }) => ({
-                    color: isActive ? "white" : "white",
-                    fontWeight: "600",
-                    fontSize: "1.2em",
-                  })}
-                  isActive={() => false} // Prevent isActive from being passed to DOM elements
-                >
-                  {item}
-                </NavHashLink>
+              <Button
+                onClick={() => (location.href = `/#${item.toLowerCase()}`)}
+                key={item.toLowerCase()}
+                sx={{
+                  color: "#fff",
+                  fontWeight: "600",
+                  fontSize: "1.2em",
+                  "&:hover": {
+                    backgroundColor: "#834635",
+                  },
+                }}
+              >
+                {item}
               </Button>
             ))}
           </Box>
         </Toolbar>
+        <LocationFormResult />
       </AppBar>
 
       <nav>
@@ -121,4 +137,4 @@ function Nav(props) {
   );
 }
 
-export default Nav;
+export default NavResult;

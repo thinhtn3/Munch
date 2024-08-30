@@ -5,21 +5,20 @@ import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
 import BackButton from "./BackButton";
 import { motion } from "framer-motion";
+import NavResult from "./NavResult";
 
 function ResultsPage() {
   const [places, setPlaces] = useState([]);
-  const [foodData, setFoodData] = useState({})
+  const [foodData, setFoodData] = useState({});
   const [width, setWidth] = useState(0);
   const carousel = useRef();
   const serverEndPoint = import.meta.env.VITE_SERVER_END_POINT;
 
   const getData = async () => {
     try {
-      const response = await axios.get(
-        `${serverEndPoint}/fetch`
-      );
-      if (response.data) { 
-        setFoodData(response.data.foodData)
+      const response = await axios.get(`${serverEndPoint}/fetch`);
+      if (response.data) {
+        setFoodData(response.data.foodData);
         setPlaces(response.data.restaurant); //update State with the array of information we .json in express server
       }
     } catch (e) {
@@ -38,7 +37,8 @@ function ResultsPage() {
   }, [places]);
 
   return (
-    <>
+    <section id="resultPage">
+      <NavResult />
       <div className="background">
         <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
           Restaurant Results
@@ -46,9 +46,6 @@ function ResultsPage() {
         <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
           Displaying results for {foodData.cuisine_type} {foodData.food_name}
         </motion.h1>
-        <nav className="backNav">
-          <BackButton />
-        </nav>
         <motion.div
           ref={carousel}
           initial={{ x: 0 }}
@@ -83,7 +80,7 @@ function ResultsPage() {
           </motion.div>
         </motion.div>
       </div>
-    </>
+    </section>
   );
 }
 

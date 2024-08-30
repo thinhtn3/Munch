@@ -66,9 +66,7 @@ export default function RestaurantCard({
               </p>
               <p>{country}</p>
               <p style={{ textDecoration: "underline" }}>{phone_number}</p>
-              <span>
-                {rating}⭐ ({reviews} reviews)
-              </span>
+              {rating}⭐ ({reviews} reviews)
             </div>
           </div>
         </div>

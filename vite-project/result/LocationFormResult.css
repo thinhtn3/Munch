@@ -1,0 +1,73 @@
+#locationForm {
+  z-index: 10;
+  position: relative;
+  top: 0.5em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputBox {
+  width: 300px;
+  height: 50px;
+  margin-bottom: 1em;
+  border: 0;
+  font-size: 1em;
+  text-align: left;
+  width: 330px;
+  background-color: white;
+  padding: 0em 1em;
+  box-sizing: border-box;
+  color: rgb(46, 46, 46);
+  z-index: 10;
+}
+.inputBox:first-child {
+  margin-right: 2px;
+}
+
+.pac-container {
+  z-index: 1500 !important; /* Ensure it's above the AppBar */
+}
+#locationForm h4 {
+  font-size: 1.2em;
+}
+
+@media screen and (max-width: 745px) {
+  #formSubmit {
+    flex-direction: column;
+  }
+  #formSubmit form {
+    flex-direction: column;
+    align-items: center;
+  }
+  .inputBox {
+    width: 500px;
+    margin-bottom: 1em;
+    text-align: center;
+  }
+  .inputBox:first-child {
+    margin-right: 0px;
+    margin-bottom: 5px;
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .inputBox {
+    width: 450px;
+    height: 45px;
+  }
+}
+@media screen and (max-width: 460px) {
+  .inputBox {
+    width: 350px;
+    height: 35px;
+  }
+  #locationForm h4 {
+    font-size: 0.9em;
+  }
+  #locationForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 80vw;
+  }
+}
