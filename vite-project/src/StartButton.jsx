@@ -7,6 +7,10 @@ export default function StartButton({
   imageFile,
   setImageFile,
 }) {
+  const resetFile = (e) => {
+    handleImageChange(e);
+    e.target.value = null //Resets the input value. To allow for uploading same img twice
+  };
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <form onSubmit={(e) => e.preventDefault()}>
@@ -16,7 +20,7 @@ export default function StartButton({
             accept="image/*, image/jpeg, image/png, image/heic, image/heif, image/avif"
             id="libraryInput"
             style={{ display: "none" }}
-            onChange={handleImageChange} // the moment the image changes, handleImageChange runs
+            onChange={resetFile} // the moment the image changes, handleImageChange runs
           />
           <button
             type="button"
