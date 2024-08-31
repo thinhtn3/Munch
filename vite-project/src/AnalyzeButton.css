@@ -1,19 +1,13 @@
 
 
 #analyzeButton {
-  padding: 0.6em 1.2em;
-  font-size: 1.15em;
-  font-weight: 500;
   font-family: inherit;
   background-color: #ad5d47;
   cursor: pointer;
   transition: 0.3s;
   border: 0px;
   height: 50px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   color: white;
   box-sizing: border-box;
 }

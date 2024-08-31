@@ -5,9 +5,12 @@ import Autocomplete from "react-google-autocomplete";
 import AnalyzeButton from "../src/AnalyzeButton";
 
 export default function LocationFormResult() {
-  // const [geolocation, setGeolocation] = useState("");
+  /**
+   Component which houses states, StartButton and Analyze Button
+   */
   const [formData, setFormData] = useState({ geolocation: "", category: "" });
   const [imageFile, setImageFile] = useState(null);
+
   const handleImageChange = (e) => {
     e.preventDefault();
     let file = e.target.files[0];
@@ -16,14 +19,15 @@ export default function LocationFormResult() {
     }
   };
 
-  // Function to set Geolocation (update state) when place is clicked on
   const handlePlaceSelected = (place) => {
+    // Update formData.geolocation when a place is selected
     setFormData((current) => {
       return { ...current, geolocation: place.formatted_address };
     });
   };
 
   const updateForm = (e) => {
+    // Updates formData.geolocation || formData.category when typed, changes the state.
     const selectedName = e.target.name;
     const newValue = e.target.value;
     setFormData((current) => {
@@ -31,8 +35,8 @@ export default function LocationFormResult() {
     });
   };
 
-  // Prevent default behavior of submit
   const handleSubmit = async (e) => {
+    // Prevent default behavior of submit
     e.preventDefault();
     console.log(formData.geolocation);
   };
@@ -61,15 +65,17 @@ export default function LocationFormResult() {
           />
         </form>
         <AnalyzeButton
+          // Passes these props to this comp to be sent to server
           imgFile={imageFile}
           geolocation={formData.geolocation}
           category={formData.category}
         />
-        <StartButton
+
+        {/* <StartButton
           handleImageChange={handleImageChange}
           imageFile={imageFile}
           setImageFile={setImageFile}
-        />
+        /> */}
       </div>
     </section>
   );

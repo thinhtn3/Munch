@@ -8,17 +8,19 @@ export default function StartButton({
   setImageFile,
 }) {
   const resetFile = (e) => {
+    //Resets the input value after displaying image. To allow for uploading same img twice
     handleImageChange(e);
-    e.target.value = null //Resets the input value. To allow for uploading same img twice
+    e.target.value = null;
   };
+
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="libraryInput">
           <input
             type="file"
-            accept="image/*, image/jpeg, image/png, image/heic, image/heif, image/avif"
             id="libraryInput"
+            accept="image/*, image/jpeg, image/png, image/heic, image/heif, image/avif"
             style={{ display: "none" }}
             onChange={resetFile} // the moment the image changes, handleImageChange runs
           />
@@ -41,7 +43,7 @@ export default function StartButton({
             />
           </div>
         ) : (
-          ""
+          "" //Return empty string if no imageFile exist
         )}
       </form>
     </div>

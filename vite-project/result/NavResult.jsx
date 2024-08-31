@@ -75,7 +75,7 @@ function NavResult(props) {
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
-            <img src={munchLogo} className="logo" alt="Munch Logo" />
+            <img src={munchLogo} className="logo" alt="Munch Logo" id="logo" />
             <h1
               id="navTitle"
               style={{
@@ -87,7 +87,7 @@ function NavResult(props) {
               Munch
             </h1>
           </div>
-
+          <LocationFormResult />
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
@@ -107,7 +107,6 @@ function NavResult(props) {
             ))}
           </Box>
         </Toolbar>
-        <LocationFormResult />
       </AppBar>
 
       <nav>

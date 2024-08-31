@@ -14,7 +14,7 @@ import { NavHashLink } from "react-router-hash-link";
 import "./Nav.css";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"];
+const navItems = ["Home", "About", "Contact"]; 
 
 function Nav(props) {
   const { window } = props;
@@ -57,6 +57,7 @@ function Nav(props) {
         component="nav"
         sx={{ backgroundColor: "#ad5d47df", padding: "0em 1em" }}
       >
+        {/* AppBar == the entire navbar */}
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
@@ -69,7 +70,7 @@ function Nav(props) {
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
-            <img src={munchLogo} className="logo" alt="" />
+            <img src={munchLogo} className="logo" alt="logo" id="logo" />
             <h1 id="navTitle">Munch</h1>
           </div>
 

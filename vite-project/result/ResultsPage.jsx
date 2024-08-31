@@ -3,13 +3,12 @@ import React, { useRef, useEffect, useState } from "react";
 import axios from "axios";
 import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
-import BackButton from "./BackButton";
 import { motion } from "framer-motion";
 import NavResult from "./NavResult";
 
 function ResultsPage() {
   const [places, setPlaces] = useState([]);
-  const [foodData, setFoodData] = useState({});
+  const [foodData, setFoodData] = useState("");
   const [width, setWidth] = useState(0);
   const carousel = useRef();
   const serverEndPoint = import.meta.env.VITE_SERVER_END_POINT;
@@ -40,11 +39,11 @@ function ResultsPage() {
     <section id="resultPage">
       <NavResult />
       <div className="background">
-        <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
+        <motion.h1 style={{ color: "black", margin: "0", padding: "1em" }}>
           Restaurant Results
         </motion.h1>
-        <motion.h1 style={{ color: "white", margin: "0", padding: "1em" }}>
-          Displaying results for {foodData.cuisine_type} {foodData.food_name}
+        <motion.h1 style={{ color: "black", margin: "0", padding: "1em" }}>
+          Displaying results for {foodData}
         </motion.h1>
         <motion.div
           ref={carousel}

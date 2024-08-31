@@ -1,5 +1,7 @@
 import "./About.css";
 
+// About section
+
 export default function About() {
   return (
     <section id="about">

@@ -5,6 +5,15 @@ const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
 const processImage = async (filePath) => {
+  /*
+  If file is recieved, file will be passed into Gemini's API along with custom prompt.
+  Returns jsonGoogle with the following key
+  is_food
+  is_drink
+  food_name
+  cuisine_type
+  jsonGoogle is passed into yelpByPhoto.js
+   */
   try {
     const prompt =
       "return in JSON without markdown syntax, is_food, is_drink, the food_name, and cuisine_type, based on the image provided";

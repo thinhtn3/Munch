@@ -1,6 +1,13 @@
 const axios = require("axios");
 
 const yelpByQuery = async (query, location) => {
+  /**
+    Takes in food query (string) and location query
+    Make get request to YelpAPI using food query
+    Maps through results of get Request and returning a new array in businesses.restaurant
+   */
+
+  //Sending request to Yelp API
   let businesses = { foodData: query, restaurant: [] };
   const config = {
     headers: {
@@ -11,9 +18,7 @@ const yelpByQuery = async (query, location) => {
   const resp = await axios.get(
     `https://api.yelp.com/v3/businesses/search?location=${location
       .toLowerCase()
-      .replace(" ", "%20")}&term=${query
-      .toLowerCase()
-      .replace(" ", "%20")}
+      .replace(" ", "%20")}&term=${query.toLowerCase().replace(" ", "%20")}
       &sort_by=best_match`,
     config
   );

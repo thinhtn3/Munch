@@ -7,7 +7,7 @@
   z-index: 10;
 }
 /*  */
-.logo-row img {
+.logo-row #logo {
   min-width: 50px;
   min-height: 50px;
   align-self: center;
