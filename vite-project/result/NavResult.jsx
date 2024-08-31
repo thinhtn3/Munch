@@ -31,16 +31,22 @@ function NavResult(props) {
         {navItems.map((item) => (
           <ListItem key={item} disablePadding>
             <ListItemButton sx={{ textAlign: "center" }}>
-              <NavHashLink
-                smooth
-                to={`/#${item.toLowerCase()}`}
-                style={({ isActive }) => ({
-                  color: isActive ? "black" : "yellow",
-                })}
-                isActive={() => false}
-              >
-                {item}
-              </NavHashLink>
+              {navItems.map((item) => (
+                <Button
+                  onClick={() => (location.href = `/#${item.toLowerCase()}`)}
+                  key={item.toLowerCase()}
+                  sx={{
+                    color: "black",
+                    fontWeight: "600",
+                    fontSize: "1em",
+                    "&:hover": {
+                      backgroundColor: "#834635",
+                    },
+                  }}
+                >
+                  {item}
+                </Button>
+              ))}
             </ListItemButton>
           </ListItem>
         ))}

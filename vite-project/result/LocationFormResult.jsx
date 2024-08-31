@@ -42,14 +42,14 @@ export default function LocationFormResult() {
   };
 
   return (
-    <section id="locationForm">
+    <section id="locationFormResult">
       <div style={{ display: "flex" }} id="formSubmit">
         <form onSubmit={handleSubmit} style={{ display: "flex" }}>
           <input
             placeholder="Search any cuisine, food, and drinks "
             name="category"
             value={formData.category}
-            className="inputBox"
+            className="inputBoxResult"
             onChange={updateForm}
           ></input>
 
@@ -57,7 +57,7 @@ export default function LocationFormResult() {
             id="autoComplete"
             name="geolocation"
             value={formData.geolocation}
-            className="inputBox"
+            className="inputBoxResult"
             apiKey={import.meta.env.VITE_GOOGLE_PLACES_API_KEY}
             types={["establishment"]}
             onChange={updateForm}
