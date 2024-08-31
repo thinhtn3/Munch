@@ -43,8 +43,7 @@ function ResultsPage() {
           Restaurant Results
         </motion.h1>
         <motion.h1 style={{ color: "black", margin: "0", padding: "1em" }}>
-          {/* Displaying results for {foodData} */}
-          {console.log(foodData)}
+          Displaying results for {foodData}
         </motion.h1>
         <motion.div
           ref={carousel}
