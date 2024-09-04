@@ -40,7 +40,7 @@ const yelpSearch = async (res, func) => {
   Takes response and a function as parameter
   Depending on the type of request received (req.files or req.body.search_q), execute that function imported from yelp.js
   If error, send a response. Most of the time the error is due to user not entering a valid location
-   */
+  */
 
   console.log("Post Request Made");
   try {
@@ -59,6 +59,7 @@ const checkFiles = async (validated, location, req, res) => {
   /**
    Checks type of files and run the appropriate functions depending on the file
    */
+
   if (!req.files && !req.body.search_q) {
     res.status(400).send("No input received");
   } else if (req.files[0]) {

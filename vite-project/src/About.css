@@ -1,20 +1,22 @@
 #about .about-heading {
-  font-size: 3em;
-  text-align: left;
-  margin: 1em 0em 0em 0em;
-  padding: 0em 1em;
-}
-#about .about-paragraph {
-  font-size: 1.5em;
-  text-align: left;
-  padding: 0em 3em;
-}
+    font-size: 2em;
+    text-align: left;
+    margin: 1em 0em 0em 0em;
+    padding: 0em 1em;
+    color: black;
+  }
+  #about .about-paragraph {
 
-@media screen and (max-width: 420px) {
-    #about .about-heading {
-        font-size: 1.8em;
-    }
-    #about .about-hparagraph {
-        font-size: 1.2em;
-    }
-}
+    text-align: left;
+    padding: 0em 3em;
+    color: black;
+  }
+  
+  @media screen and (max-width: 420px) {
+      #about .about-heading {
+          font-size: 1.8em;
+      }
+      #about .about-hparagraph {
+          font-size: 1.2em;
+      }
+  }

@@ -1,0 +1,43 @@
+#features {
+  margin: 2em 0em;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#features .featureImage {
+  width: 30vw;
+
+  object-fit: contain;
+}
+
+#features .feature-heading {
+  font-size: 2em;
+  text-align: center;
+  margin: 1em 0em 0em 0em;
+  padding: 0em 1em;
+  color: black;
+  width: 400px;
+  height: 100px;
+}
+#features .featureParagraph {
+  font-size: 1em;
+  text-align: center;
+  padding: 0em 3em;
+  color: black;
+  width: 400px;
+}
+
+.aboutText {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 420px) {
+    #about .about-heading {
+        font-size: 1.8em;
+    }
+    #about .about-hparagraph {
+        font-size: 1.2em;
+    }
+}

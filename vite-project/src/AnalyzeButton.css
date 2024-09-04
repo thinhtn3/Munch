@@ -2,7 +2,7 @@
 
 #analyzeButton {
   font-family: inherit;
-  background-color: #ad5d47;
+  background-color: #ff9f1c;
   cursor: pointer;
   transition: 0.3s;
   border: 0px;
@@ -10,10 +10,11 @@
   margin-bottom: 10px;
   color: white;
   box-sizing: border-box;
+  width: 60px;
 }
 
  #analyzeButton:hover {
-  background-color: #834635;
+  background-color: #b97617;
 }
 
 #searchIcon {

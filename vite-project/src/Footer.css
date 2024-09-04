@@ -1,13 +1,23 @@
-
-
 /* Commented out for time being due to formatting issues on Mobile. */
-/* .footer {
-    background-color: #122455;
-    height: 100px;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: em;
-    width: 90vw;
-} */
+#footer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  background-color: #ffa01c10;
+}
+
+#footer #footerImageContainer {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#footer .footerImage {
+  display: flex;
+  width: 200px;
+
+  object-fit: contain;
+}
+.copyright {
+  margin: 5em 0em;
+  color: black;
+}

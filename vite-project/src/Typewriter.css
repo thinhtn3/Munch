@@ -26,17 +26,24 @@
 #headingContainer h2 {
   font-weight: 600;
   font-size: 6em;
+  color: #FF9F1C;
 }
+
 #headingContainer h3 {
   font-weight: 600;
   font-size: 5em;
   margin-bottom: 0;
+  color: #FF9F1C;
 }
 #headingContainer p {
   font-size: 1.5em;
   font-weight: 400;
   padding-bottom: 1em;
   margin: 0;
+}
+
+.highlight {
+  color: white;
 }
 
 @keyframes blink-animation {

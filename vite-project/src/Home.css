@@ -4,6 +4,8 @@
   justify-content: center;
   height: 85vh;
   margin: 0px 0px;
+  background-image: url("./assets/amirali-mirhashemian-fimM6mgqv6M-unsplash.jpg");
+  background-size: cover;
 }
 
 .slogan-column {

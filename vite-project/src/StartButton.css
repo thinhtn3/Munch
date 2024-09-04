@@ -2,7 +2,7 @@
   font-size: 1.15em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #ad5d47;
+  background-color: #ff9f1c;
   cursor: pointer;
   width: 330px;
   transition: 0.3s;
@@ -16,7 +16,7 @@
 }
 
 .takePhotoButton:hover {
-  background-color: rgb(174, 113, 2);
+  background-color: #b97617;
 }
 
 .displayImage {

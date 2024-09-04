@@ -24,3 +24,13 @@
     font-weight: 800;
 }
 
+.navLinks {
+  color: black;
+  font-weight: 600;
+  font-size: 1.35em;
+  cursor: pointer;
+}
+
+.navLinks:hover {
+  color: white;
+}

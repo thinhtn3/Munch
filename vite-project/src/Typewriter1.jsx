@@ -30,6 +30,11 @@ const Typewriter = ({
     }
   }, [index1, text1.length, index2, text2.length, speed]);
 
+  // Split text2 into parts: before "started", the word "started", and after "started"
+  const splitText2 = text2.split(" ");
+  const beforeStarted = splitText2.slice(0, -1).join(" ") + " ";
+  const wordStarted = splitText2[splitText2.length - 1];
+
   return (
     <div className="Text">
       <div id="headingContainer">
@@ -39,22 +44,24 @@ const Typewriter = ({
             <span className="cursor">|</span>
           )}
         </h2>
-        {/* The h3 element now exists from the start with transparent text to maintain layout */}
         <h3>
-          {
-            index1 === text1.length
-              ? text2.substring(0, index2)
-              : "\u00A0" /* Non-breaking space */
-          }
+          {index1 === text1.length && (
+            <>
+              {beforeStarted.substring(0, index2)}
+              {index2 > beforeStarted.length && (
+                <span className="highlight">
+                  {wordStarted.substring(
+                    0,
+                    index2 - beforeStarted.length
+                  )}
+                </span>
+              )}
+            </>
+          )}
           {showCursor && index2 < text2.length && (
             <span className="cursor">|</span>
           )}
         </h3>
-
-        {/* <p>
-          Simply enter a location, upload a photo of your favorite dish and get
-          a curated list of nearby restaurants that serve that delicious dish.
-        </p> */}
       </div>
     </div>
   );

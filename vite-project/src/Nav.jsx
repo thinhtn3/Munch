@@ -14,7 +14,7 @@ import { NavHashLink } from "react-router-hash-link";
 import "./Nav.css";
 
 const drawerWidth = 240;
-const navItems = ["Home", "About", "Contact"]; 
+const navItems = ["Home", "Features", "About", "Contact"];
 
 function Nav(props) {
   const { window } = props;
@@ -55,7 +55,11 @@ function Nav(props) {
     <Box sx={{ display: "flex" }}>
       <AppBar
         component="nav"
-        sx={{ backgroundColor: "#ad5d47df", padding: "0em 1em" }}
+        sx={{
+          backgroundColor: "white",
+          padding: "1.2em 1.5em",
+          borderBottom: "10px solid #FF9F1C",
+        }}
       >
         {/* AppBar == the entire navbar */}
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
@@ -71,21 +75,29 @@ function Nav(props) {
 
           <div className="logo-row" style={{ display: "flex" }}>
             <img src={munchLogo} className="logo" alt="logo" id="logo" />
-            <h1 id="navTitle">Munch</h1>
           </div>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item.toLowerCase()}>
+              <Button
+                key={item.toLowerCase()}
+                sx={{
+                  cursor: "pointer",
+                  "&:hover": {
+                    backgroundColor: "#FF9F1C",
+                  },
+                }}
+              >
                 <NavHashLink
+                  className="navLinks"
                   smooth
                   to={`#${item.toLowerCase()}`}
-                  style={({ isActive }) => ({
-                    color: isActive ? "white" : "white",
-                    fontWeight: "600",
-                    fontSize: "1.2em",
-                  })}
-                  isActive={() => false} // Prevent isActive from being passed to DOM elements
+                  // style={{
+                  //   color: "black",
+                  //   fontWeight: "600",
+                  //   fontSize: "1.35em",
+                  // }}
+                  // isActive={() => false} // Prevent isActive from being passed to DOM elements
                 >
                   {item}
                 </NavHashLink>
