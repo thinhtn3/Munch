@@ -70,7 +70,10 @@ function Nav(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{
+              // color:"black",
+              color:"#ff9f1c"
+            }} />
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
@@ -92,12 +95,6 @@ function Nav(props) {
                   className="navLinks"
                   smooth
                   to={`#${item.toLowerCase()}`}
-                  // style={{
-                  //   color: "black",
-                  //   fontWeight: "600",
-                  //   fontSize: "1.35em",
-                  // }}
-                  // isActive={() => false} // Prevent isActive from being passed to DOM elements
                 >
                   {item}
                 </NavHashLink>
@@ -121,6 +118,7 @@ function Nav(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
+              backgroundColor:"#FF9F1C",
             },
           }}
         >

@@ -1,11 +1,20 @@
+#home {
+  margin: 0;
+  padding: 0;
+}
 .home-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 85vh;
+  height: 90vh;
   margin: 0px 0px;
-  background-image: url("./assets/amirali-mirhashemian-fimM6mgqv6M-unsplash.jpg");
+  backdrop-filter: blur(4px);
+}
+
+#backdropPhoto{ 
+  background-image: url('./assets/amirali-mirhashemian-fimM6mgqv6M-unsplash.jpg');
   background-size: cover;
+  position: relative;
 }
 
 .slogan-column {

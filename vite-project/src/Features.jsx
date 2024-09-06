@@ -11,19 +11,17 @@ export default function About() {
         <img src={feature2} alt="feature" className="featureImage" />
         {/* <h4 className="about-heading">What is Munch?</h4> */}
         <p className="featureParagraph">
-          Find your next favorite restaurant with Munch. Simply enter your
-          preferred cuisine and location, and with the help of Yelp, Munch will
-          generate a curated list of restaurants to satisfy your munch.
+          Find your next favorite restaurant with Munch. Curated directly from
+          Yelp
         </p>
       </article>
 
-      <article className="aboutText">
+      <article className="featureContainer">
         <img src={feature1} alt="feature" className="featureImage" />
         {/* <h4 className="about-heading">What is Munch?</h4> */}
         <p className="featureParagraph">
-          Unsure of what the food/cuisine name is? Upload a photo and Munch will
-          help generate a curated list using Google Gemini's photo identifcation
-          API.
+          Unsure of what the food/cuisine name is? Upload a photo and let Munch
+          find your next meal!
         </p>
       </article>
 

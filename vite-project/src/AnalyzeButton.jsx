@@ -89,7 +89,7 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
       <button id="analyzeButton" type="button" onClick={validation}>
         <img src={searchIcon} alt="search icon" id="searchIcon" />
       </button>
-      {loading && <BarLoader color="white" style={{ marginBottom: "1em" }} />}
+      {loading && <BarLoader color="#FF9F1C" style={{ marginBottom: "1em" }} />}
     </div>
   );
 }

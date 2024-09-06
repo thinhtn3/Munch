@@ -14,7 +14,7 @@ export default function StartButton({
   };
 
   return (
-    <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+    <div id="startButton" style={{ width: "100%", display: "flex", justifyContent: "center" }}>
       <form onSubmit={(e) => e.preventDefault()}>
         <label htmlFor="libraryInput">
           <input

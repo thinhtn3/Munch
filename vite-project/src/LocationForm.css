@@ -59,4 +59,13 @@
     justify-content: center;
     width: 80vw;
   }
+  #formSubmit {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 90vw;
+  }
+  #formSubmit .inputBox {
+    width: 60vw;
+    height: 5vh;
+    border: 0.5px solid black;
 }

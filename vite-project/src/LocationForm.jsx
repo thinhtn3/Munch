@@ -73,10 +73,6 @@ export default function LocationForm() {
         />
       </div>
 
-      {/* <h4 style={{color:"black"}}>
-        Unsure of what the food is? Upload a photo and let AI find you
-        restaurants
-      </h4> */}
 
       <StartButton
         //Pass these props to handle image change and update the state from the component

@@ -5,8 +5,7 @@
 }
 
 #features .featureImage {
-  width: 30vw;
-
+  width: 35vw;
   object-fit: contain;
 }
 
@@ -16,15 +15,15 @@
   margin: 1em 0em 0em 0em;
   padding: 0em 1em;
   color: black;
-  width: 400px;
+  width: 35vw;
   height: 100px;
 }
 #features .featureParagraph {
-  font-size: 1em;
+  font-size: 1.5em;
   text-align: center;
   padding: 0em 3em;
   color: black;
-  width: 400px;
+  width: 35vw;
 }
 
 .aboutText {
@@ -33,11 +32,47 @@
   align-items: center;
 }
 
-@media screen and (max-width: 420px) {
-    #about .about-heading {
-        font-size: 1.8em;
-    }
-    #about .about-hparagraph {
-        font-size: 1.2em;
-    }
+@media screen and (max-width: 936px) {
+  #features .featureParagraph {
+    font-size: 1.25em;
+  }
 }
+
+
+@media screen and (max-width: 790px) {
+  #features .featureParagraph {
+    font-size: 1em;
+  }
+}
+
+@media screen and (max-width:650px) {
+  #features .featureParagraph {
+    font-size: 0.9em;
+  }
+}
+@media screen and (max-width:590px) {
+  #features .featureParagraph {
+    font-size: 0.8em;
+    margin: 1em 0em;
+    padding: 0em;
+    width: 33vw;
+  }
+}
+@media screen and (max-width:500px) {
+  #features {
+    flex-direction: column;
+  }
+  #features .featureImage{
+    width: 75vw;
+  }
+  #features .featureContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  #features .featureParagraph {
+    font-size: 1em;
+    width: 80vw;
+  }
+}
+

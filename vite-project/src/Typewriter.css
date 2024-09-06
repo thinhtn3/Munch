@@ -97,4 +97,7 @@
   #headingContainer {
     width: 100vw;
   }
+  .highlight {
+    color: #FF9F1C;
+  }
 }

@@ -5,7 +5,7 @@ import yelpFusionLogo from "./assets/yelpFusionLogo.png";
 export default function Footer() {
   return (
     <div id="footer">
-      <h4 style={{ color: "black", fontSize:"2em", letterSpacing:"3px" }}>Powered By:</h4>
+      <h4 className="footerHeading" style={{ color: "black", fontSize:"2em", letterSpacing:"3px" }}>Powered By:</h4>
       <div id="footerImageContainer">
         <img src={geminiLogo} alt="geminiLogo" className="footerImage" />
         {/* <h4 className="footerHeading">Powered by Gemini</h4>
