@@ -46,13 +46,16 @@ export default function LocationForm() {
     <section id="locationForm">
       <div style={{ display: "flex" }} id="formSubmit">
         <form onSubmit={handleSubmit} style={{ display: "flex" }}>
-          <input
-            name="category"
-            value={formData.category}
-            className="inputBox"
-            placeholder="Search any cuisine, food, and drinks "
-            onChange={updateForm}
-          ></input>
+          <div style={{display:"flex"}}>
+            <input
+              name="category"
+              value={formData.category}
+              className="inputBox"
+              placeholder="Search any cuisine, food, and drinks "
+              onChange={updateForm}
+            ></input>
+
+          </div>
 
           <Autocomplete
             name="geolocation"
@@ -72,7 +75,6 @@ export default function LocationForm() {
           category={formData.category}
         />
       </div>
-
 
       <StartButton
         //Pass these props to handle image change and update the state from the component

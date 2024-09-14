@@ -79,6 +79,7 @@ app.post("/api/upload", upload.any(), async (req, res) => {
 });
 
 app.get("/fetch", async (req, res) => {
+  console.log("Redirecting to Results")
   res.json(yelpResult); //
 });
 

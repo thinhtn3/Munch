@@ -10,7 +10,6 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import munchLogo from "../assets/munchLogo.png";
-import { NavHashLink } from "react-router-hash-link";
 import LocationFormResult from "./LocationFormResult";
 import "./NavResult.css";
 
@@ -61,7 +60,7 @@ function NavResult(props) {
     <Box sx={{ display: "flex" }}>
       <AppBar
         component="nav"
-        sx={{ backgroundColor: "#ad5d47df", padding: "0em 1em" }}
+        sx={{ backgroundColor: "#fff", padding: "0em 1em", borderBottom:"8px solid #ff9f1c" }}
       >
         <Toolbar
           id="toolBar"
@@ -82,16 +81,6 @@ function NavResult(props) {
 
           <div className="logo-row" style={{ display: "flex" }}>
             <img src={munchLogo} className="logo" alt="Munch Logo" id="logo" />
-            <h1
-              id="navTitle"
-              style={{
-                fontWeight: "800",
-                fontSize: "2.9em",
-                paddingLeft: "0.5em",
-              }}
-            >
-              Munch
-            </h1>
           </div>
           <LocationFormResult />
           <Box sx={{ display: { xs: "none", sm: "block" } }}>

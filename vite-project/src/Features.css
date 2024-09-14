@@ -5,12 +5,12 @@
 }
 
 #features .featureImage {
-  width: 35vw;
+  width: 30vw;
   object-fit: contain;
 }
 
 #features .feature-heading {
-  font-size: 2em;
+  font-size: 1em;
   text-align: center;
   margin: 1em 0em 0em 0em;
   padding: 0em 1em;
@@ -19,7 +19,7 @@
   height: 100px;
 }
 #features .featureParagraph {
-  font-size: 1.5em;
+  font-size: 1.2em;
   text-align: center;
   padding: 0em 3em;
   color: black;

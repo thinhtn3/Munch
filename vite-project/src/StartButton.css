@@ -1,10 +1,11 @@
+
 .takePhotoButton {
   font-size: 1.15em;
   font-weight: 500;
   font-family: inherit;
   background-color: #ff9f1c;
   cursor: pointer;
-  width: 330px;
+  width: 30vw;
   transition: 0.3s;
   border: 0px;
   height: 50px;
@@ -13,6 +14,7 @@
   align-items: center;
   color: white;
   margin: 0;
+  position: relative;
 }
 
 .takePhotoButton:hover {
@@ -21,7 +23,6 @@
 
 .displayImage {
   display: flex;
-  /* row-gap: 20px; */
   flex-direction: column;
   align-items: center;
   justify-content: center;
