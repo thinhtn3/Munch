@@ -10,4 +10,4 @@ Munch is a web application that helps user discover new restaurants using a sing
 
 ##  Demo
 
-You can check out the app's live deployment here [here](https://snapcuisine.vercel.app)
+You can check out the app's live deployment here [here](https://munchapp.vercel.app)
