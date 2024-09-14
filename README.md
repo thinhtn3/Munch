@@ -23,8 +23,9 @@ PORT=8080
 
 Frontend:
 Create a .env file in Munch/vite-project folder and add the following:
-VITE_SERVER_END_POINT="http://localhost:8080"  
-VITE_GOOGLE_PLACES_API_KEY="INSERT_YOUR_OWN"  
+
+VITE_SERVER_END_POINT="http://localhost:8080"   
+VITE_GOOGLE_PLACES_API_KEY="INSERT_YOUR_OWN"    
 
 ### Installing dependencies ###
 In root folder, run `npm run install-all`
