@@ -89,11 +89,12 @@ function NavResult(props) {
                 onClick={() => (location.href = `/#${item.toLowerCase()}`)}
                 key={item.toLowerCase()}
                 sx={{
-                  color: "#fff",
+                  color: "black",
                   fontWeight: "600",
                   fontSize: "1.2em",
                   "&:hover": {
-                    backgroundColor: "#834635",
+                    backgroundColor: "#ff9f1c",
+                    color:"white"
                   },
                 }}
               >
