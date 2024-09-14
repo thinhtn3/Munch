@@ -16,14 +16,15 @@ You can check out the app's live deployment here [here](https://munchapp.vercel.
 ### Setting up environment variables ###
 Backend:
 Create a .env file in Munch/API folder and add the following:
-YELP_API_KEY = "INSERT_YOUR_OWN"
-GOOGLE_API_KEY = "INSERT_YOUR_OWN"
-PORT=8080
+
+YELP_API_KEY = "INSERT_YOUR_OWN"  
+GOOGLE_API_KEY = "INSERT_YOUR_OWN"  
+PORT=8080  
 
 Frontend:
 Create a .env file in Munch/vite-project folder and add the following:
-VITE_SERVER_END_POINT="http://localhost:8080"
-VITE_GOOGLE_PLACES_API_KEY="INSERT_YOUR_OWN"
+VITE_SERVER_END_POINT="http://localhost:8080"  
+VITE_GOOGLE_PLACES_API_KEY="INSERT_YOUR_OWN"  
 
 ### Installing dependencies ###
 In root folder, run `npm run install-all`
