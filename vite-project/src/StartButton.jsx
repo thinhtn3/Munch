@@ -1,5 +1,6 @@
 import "./StartButton.css";
 import RemovePhotoButton from "./RemovePhotoButton";
+import photoIcon from "./assets/photoICon.png"
 
 // export default function StartButton({ geolocation }) {
 export default function StartButton({
@@ -29,7 +30,8 @@ export default function StartButton({
             className="takePhotoButton"
             onClick={() => document.getElementById("libraryInput").click()} //.click() triggers a click event over the input for libraryInput
           >
-            Take Photo
+            Upload Photo
+            <img src={photoIcon} id="photoIcon" />
           </button>
         </label>
 

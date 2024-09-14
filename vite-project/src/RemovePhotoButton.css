@@ -8,3 +8,7 @@
   opacity: 0.8;
   border: none;
 }
+
+#RemovePhotoButton:hover{
+  cursor: pointer;
+}

@@ -35,8 +35,8 @@
 @media screen and (max-width: 460px) {
   
   #analyzeButton {
-    width: 100px;
-    height: 11vh;
-    border-radius: 5px;
+    width: 90vw;
+    height: 6vh;
+    margin-bottom: 2em;
   }
 }

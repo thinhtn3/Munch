@@ -30,8 +30,7 @@ p {
 @media screen and (max-device-width: 550px) {
   .card {
     margin: 2em 0em;
-    height: 550px;
-    border-radius: 30px;
+    height: 625px;
     opacity: 0; /* Start with the card invisible */
     transition: opacity 1s ease-out; /* Smooth transition for the opacity */
     will-change: opacity; /* Optimize the opacity property for animations */
@@ -61,14 +60,12 @@ p {
   .imageContainer img {
     width: 100%;
     height: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     object-fit: cover;
   }
 
   .imageContainer {
     width: 100%; /* Adjust to your desired width */
-    height: 300px; /* Adjust to your desired height */
+    height: 270px; /* Adjust to your desired height */
   }
 }
 
@@ -77,7 +74,6 @@ p {
     margin: 1em 0em;
     width: 500px;
     height: 600px;
-    border-radius: 30px;
     opacity: 0; /* Start with the card invisible */
     transition: opacity 1s ease-out; /* Smooth transition for the opacity */
     will-change: opacity; /* Optimize the opacity property for animations */
@@ -96,8 +92,6 @@ p {
   .imageContainer img {
     width: 100%;
     height: 100%;
-    border-top-left-radius: 30px;
-    border-top-right-radius: 30px;
     object-fit: cover;
   }
 

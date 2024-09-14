@@ -51,6 +51,7 @@
     height: 45px;
   }
 }
+
 @media screen and (max-width: 460px) {
   .inputBox {
     width: 350px;
@@ -61,18 +62,14 @@
   }
   #locationForm {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     width: 80vw;
   }
   #formSubmit {
-    flex-direction: row;
-    justify-content: space-between;
     width: 90vw;
   }
   #formSubmit .inputBox {
-    width: 60vw;
-    height: 5vh;
+    width: 90vw;
+    height: 6vh;
     border: 0.5px solid black;
   }
 }

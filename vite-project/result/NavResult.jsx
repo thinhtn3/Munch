@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import munchLogo from "../assets/munchLogo.png";
 import LocationFormResult from "./LocationFormResult";
 import "./NavResult.css";
+import { color } from "framer-motion";
 
 const drawerWidth = 240;
 const navItems = ["Home"];
@@ -60,7 +61,11 @@ function NavResult(props) {
     <Box sx={{ display: "flex" }}>
       <AppBar
         component="nav"
-        sx={{ backgroundColor: "#fff", padding: "0em 1em", borderBottom:"8px solid #ff9f1c" }}
+        sx={{
+          backgroundColor: "#fff",
+          padding: "0em 1em",
+          borderBottom: "8px solid #ff9f1c",
+        }}
       >
         <Toolbar
           id="toolBar"
@@ -76,7 +81,7 @@ function NavResult(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon />
+            <MenuIcon sx={{ color: "#ff9f1c" }} />
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
@@ -94,7 +99,7 @@ function NavResult(props) {
                   fontSize: "1.2em",
                   "&:hover": {
                     backgroundColor: "#ff9f1c",
-                    color:"white"
+                    color: "white",
                   },
                 }}
               >

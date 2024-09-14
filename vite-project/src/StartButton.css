@@ -27,5 +27,18 @@
   align-items: center;
   justify-content: center;
   margin: 0;
+
+}
+
+#photoIcon {
+  width: 2em;
+  margin-left: 1em;
+  filter: invert(1);
+}
+
+@media screen and (max-width:480px) {
+  .takePhotoButton{
+    width: 90vw;
+  }
 }
 
