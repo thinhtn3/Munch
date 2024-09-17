@@ -38,6 +38,7 @@ p {
 
   .card.is-visible {
     opacity: 1; /* Full opacity when the card is in view */
+    background-color: #ff9f1c;
   }
 
   .row-info {
