@@ -10,11 +10,11 @@
   margin-bottom: 10px;
   color: white;
   box-sizing: border-box;
-  width: 60px;
+  width: 12vw;
 }
 
  #analyzeButton:hover {
-  background-color: #ff9f1c;
+  background-color: rgb(174, 113, 2);
 }
 
 #searchIcon {

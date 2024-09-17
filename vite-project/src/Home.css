@@ -8,13 +8,12 @@
   justify-content: center;
   height: 90vh;
   margin: 0px 0px;
-  backdrop-filter: blur(4px);
+  backdrop-filter: blur(0px);
 }
 
 #backdropPhoto{ 
-  background-image: url('./assets/amirali-mirhashemian-fimM6mgqv6M-unsplash.jpg');
-  background-size: cover;
-  position: relative;
+  background-image: url('./assets/pexels-polina-tankilevitch-4443447.jpg');
+  background-position: 0% 65%;
 }
 
 .slogan-column {

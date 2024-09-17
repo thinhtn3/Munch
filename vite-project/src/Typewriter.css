@@ -33,7 +33,7 @@
   font-weight: 600;
   font-size: 5em;
   margin-bottom: 0;
-  color: #FF9F1C;
+  color: #ff9f1c
 }
 #headingContainer p {
   font-size: 1.5em;
@@ -44,6 +44,7 @@
 
 .highlight {
   color: white;
+  color: #ff9f1c
 }
 
 @keyframes blink-animation {

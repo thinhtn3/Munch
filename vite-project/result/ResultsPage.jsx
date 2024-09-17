@@ -1,10 +1,11 @@
 //results.jsx
-import React, { useRef, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./ResultsPage.css"; // Assuming you have CSS to style the results
 import RestaurantCard from "./RestaurantCard";
 import { motion } from "framer-motion";
 import NavResult from "./NavResult";
+import Footer from "../src/Footer"
 
 function ResultsPage() {
   const [places, setPlaces] = useState([]);
@@ -27,7 +28,6 @@ function ResultsPage() {
     getData();
   }, []);
 
-
   return (
     <section id="resultPage">
       <NavResult />
@@ -46,6 +46,7 @@ function ResultsPage() {
           })}
         </motion.div>
       </div>
+      <Footer />
     </section>
   );
 }

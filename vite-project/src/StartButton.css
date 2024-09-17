@@ -5,7 +5,7 @@
   font-family: inherit;
   background-color: #ff9f1c;
   cursor: pointer;
-  width: 30vw;
+  width: 500px;
   transition: 0.3s;
   border: 0px;
   height: 50px;
@@ -30,8 +30,12 @@
 
 }
 
+.displayImage img {
+  width: 165px;
+}
+
 #photoIcon {
-  width: 2em;
+  width: 1.5em;
   margin-left: 1em;
   filter: invert(1);
 }

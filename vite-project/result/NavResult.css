@@ -1,4 +1,9 @@
 #toolBar {
     z-index: 1;
-    height: 100px;
+    height: 100%;
+    padding: 1em;
+}
+
+#logo {
+    cursor: pointer;
 }

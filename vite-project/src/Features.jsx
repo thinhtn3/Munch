@@ -1,7 +1,7 @@
 import "./Features.css";
-import feature1 from "./assets/feature1.jpg";
-import feature2 from "./assets/feature2.jpg";
-import feature3 from "./assets/feature3.jpg";
+import feature1 from "./assets/feature1.svg";
+import feature2 from "./assets/feature2.svg";
+import feature3 from "./assets/feature3.svg";
 // About section
 
 export default function About() {
@@ -12,7 +12,7 @@ export default function About() {
         {/* <h4 className="about-heading">What is Munch?</h4> */}
         <p className="featureParagraph">
           Find your next favorite restaurant with Munch. Curated directly from
-          Yelp
+          Yelp.
         </p>
       </article>
 
@@ -25,15 +25,12 @@ export default function About() {
         </p>
       </article>
 
-      {/* <article className="aboutText">
+      <article className="featureContainer">
         <img src={feature3} alt="feature" className="featureImage" />
         <p className="featureParagraph">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi,
-          perferendis temporibus molestias quis odio accusamus, magnam ipsam
-          eius sequi nisi corporis voluptates blanditiis exercitationem, nihil
-          aliquam rem nobis velit tempore.
+          Take Munch everywhere you go with our mobile-friendly design.
         </p>
-      </article> */}
+      </article>
     </section>
   );
 }

@@ -70,14 +70,22 @@ function Nav(props) {
             onClick={handleDrawerToggle}
             sx={{ mr: 2, display: { sm: "none" } }}
           >
-            <MenuIcon sx={{
-              // color:"black",
-              color:"#ff9f1c"
-            }} />
+            <MenuIcon
+              sx={{
+                // color:"black",
+                color: "#ff9f1c",
+              }}
+            />
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
-            <img src={munchLogo} className="logo" alt="logo" id="logo" />
+            <img
+              src={munchLogo}
+              className="logo"
+              alt="logo"
+              id="logo"
+              onClick={() => (location.href = `/#home`)}
+            />
           </div>
 
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
@@ -118,7 +126,7 @@ function Nav(props) {
             "& .MuiDrawer-paper": {
               boxSizing: "border-box",
               width: drawerWidth,
-              backgroundColor:"#FF9F1C",
+              backgroundColor: "#FF9F1C",
             },
           }}
         >

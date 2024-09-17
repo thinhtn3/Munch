@@ -1,0 +1,35 @@
+.takePhotoButtonResult {
+  background-color: #ff9f1c;
+  cursor: pointer;
+  width: 55px;
+  transition: 0.1s;
+  border: 0px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
+
+.takePhotoButtonResult:hover {
+  background-color: rgb(174, 113, 2);
+}
+
+.displayImage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+#photoIconResult {
+  filter: invert(1);
+  width: 1.5em;
+}
+
+@media screen and (max-width: 480px) {
+  .takePhotoButton {
+    width: 90vw;
+  }
+}

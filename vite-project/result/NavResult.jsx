@@ -85,7 +85,7 @@ function NavResult(props) {
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
-            <img src={munchLogo} className="logo" alt="Munch Logo" id="logo" />
+            <img src={munchLogo} className="logo" alt="Munch Logo" id="logo" onClick={() => location.href = `/#home`} />
           </div>
           <LocationFormResult />
           <Box sx={{ display: { xs: "none", sm: "block" } }}>

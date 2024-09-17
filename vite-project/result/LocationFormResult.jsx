@@ -1,4 +1,4 @@
-import StartButton from "../src/StartButton";
+import StartButtonResult from "./StartButtonResult";
 import React, { useState } from "react";
 import "./LocationFormResult.css";
 import Autocomplete from "react-google-autocomplete";
@@ -53,6 +53,12 @@ export default function LocationFormResult() {
             onChange={updateForm}
           ></input>
 
+          <StartButtonResult
+            handleImageChange={handleImageChange}
+            imageFile={imageFile}
+            setImageFile={setImageFile}
+          />
+
           <Autocomplete
             id="autoComplete"
             name="geolocation"
@@ -70,12 +76,6 @@ export default function LocationFormResult() {
           geolocation={formData.geolocation}
           category={formData.category}
         />
-
-        {/* <StartButton
-          handleImageChange={handleImageChange}
-          imageFile={imageFile}
-          setImageFile={setImageFile}
-        /> */}
       </div>
     </section>
   );

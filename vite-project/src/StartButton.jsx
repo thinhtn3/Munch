@@ -1,6 +1,6 @@
 import "./StartButton.css";
 import RemovePhotoButton from "./RemovePhotoButton";
-import photoIcon from "./assets/photoICon.png"
+import photoIcon from "./assets/upload.png"
 
 // export default function StartButton({ geolocation }) {
 export default function StartButton({
@@ -41,7 +41,6 @@ export default function StartButton({
             <img
               src={URL.createObjectURL(imageFile)}
               alt="Preview"
-              style={{ maxWidth: "100%", width: "150px", height: "auto" }}
             />
           </div>
         ) : (
