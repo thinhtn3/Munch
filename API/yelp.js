@@ -47,14 +47,23 @@ const yelpByPhoto = async (jsonGoogle, location) => {
   const resp = await axios.get(
     `https://api.yelp.com/v3/businesses/search?location=${location
       .toLowerCase()
-      .replace(" ", "%20")}&term=${jsonGoogle.food_name
-      .toLowerCase()
-      .replace(" ", "%20")}&${jsonGoogle.cuisine_type
+      .replace(" ", "%20")}&term=${
+      jsonGoogle.cuisine_type
+    }%20${jsonGoogle.food_name
       .toLowerCase()
       .replace(" ", "%20")}&sort_by=best_match`,
     config
   );
 
+  console.log(
+    `https://api.yelp.com/v3/businesses/search?location=${location
+      .toLowerCase()
+      .replace(" ", "%20")}&term=${
+      jsonGoogle.cuisine_type
+    }%20${jsonGoogle.food_name
+      .toLowerCase()
+      .replace(" ", "%20")}&sort_by=best_match`
+  );
   return businessMap(foodData, resp);
 };
 
