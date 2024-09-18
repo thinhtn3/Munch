@@ -1,6 +1,6 @@
 .cursor {
   font-weight: bold;
-  color: white; /* Change the cursor color to blue */
+  color: #f1f1f1; /* Change the cursor color to blue */
 }
 
 .blinking {

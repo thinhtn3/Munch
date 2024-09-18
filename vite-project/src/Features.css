@@ -8,20 +8,11 @@
 }
 
 #features .featureImage {
-  width: 350px;
+  width: 320px;
   height: 100%;
   object-fit: contain;
 }
 
-/* #features .feature-heading {
-  font-size: 1em;
-  text-align: center;
-  margin: 1em 0em 0em 0em;
-  padding: 0em 1em;
-  color: black;
-  width: 30vw;
-  height: 100px;
-} */
 #features .featureParagraph {
   font-size: 1.25em;
   text-align: center;
@@ -29,23 +20,27 @@
   width: 20vw;
 }
 
+
 .aboutText {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-@media screen and (max-width: 936px) {
+@media screen and (max-width: 1025px) {
   #features .featureParagraph {
-    font-size: 1.25em;
+    font-size: 1em;
+  }
+  #features .featureImage {
+    width: 250px;
   }
 }
 
 
 @media screen and (max-width: 790px) {
   #features .featureParagraph {
-    font-size: 1em;
-    width: 25vw;
+    font-size: 0.65em;
+    width: 20vw;
   }
   #features .featureImage {
     width: 200px;
@@ -80,8 +75,8 @@
     margin: 2.5em;
   }
   #features .featureParagraph {
-    font-size: 1em;
-    width: 80vw;
+    font-size: 1.2em;
+    width: 65vw;
   }
 }
 

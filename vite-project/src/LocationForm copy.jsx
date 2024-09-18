@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import "./LocationForm.css";
 import StartButton from "./UploadPhotoButton";
-import AutocompletePlacesInput from "./AutocompletePlacesInput";
-import SearchQueryInput from "./SearchQueryInput";
+import React, { useState } from "react";
+import { TextField } from "@mui/material";
+import "./LocationForm.css";
+import { usePlacesWidget } from "react-google-autocomplete";
 import AnalyzeButton from "./AnalyzeButton";
 
 export default function LocationForm() {
   /**
    Component which houses states, StartButton and Analyze Button
    */
-
   const [formData, setFormData] = useState({ geolocation: "", category: "" });
   const [imageFile, setImageFile] = useState(null);
 
@@ -22,26 +21,59 @@ export default function LocationForm() {
     }
   };
 
+  const handlePlaceSelected = (place) => {
+    // Update formData.geolocation when a place is selected
+    setFormData((current) => {
+      return { ...current, geolocation: place.formatted_address };
+    });
+  };
+
   const updateForm = (e) => {
     // Updates formData.geolocation || formData.category when typed, changes the state.
     const selectedName = e.target.name;
     const newValue = e.target.value;
-    console.log(formData);
+    console.log(newValue);
     setFormData((current) => {
       return { ...current, [selectedName]: newValue };
     });
   };
 
+  const handleSubmit = async (e) => {
+    // Prevent default behavior of submit
+    e.preventDefault();
+    console.log(formData.geolocation);
+  };
+
+  const { ref: materialRef } = usePlacesWidget({
+    apiKey: import.meta.env.VITE_GOOGLE_PLACES_API_KEY,
+  });
+
   return (
     <section id="locationForm">
       <div style={{ display: "flex" }} id="formSubmit">
-        <form onSubmit={(e) => e.preventDefault()} style={{ display: "flex" }}>
-          <SearchQueryInput formData={formData} updateForm={updateForm} />
+        <form onSubmit={handleSubmit} style={{ display: "flex" }}>
+          <div style={{ display: "flex" }}>
+            <TextField
+              variant="outlined"
+              label="Enter Food"
+              name="category"
+              value={formData.category}
+              className="inputBox"
+              placeholder="Search any cuisine, food, and drinks "
+              onChange={updateForm}
+            />
+          </div>
 
-          <AutocompletePlacesInput
-            setFormData={setFormData}
-            formData={formData}
-            updateForm={updateForm}
+          <TextField
+            name="geolocation"
+            sx={{ width: "200px" }}
+            value={formData.geolocation}
+            onChange={updateForm}
+            onPlaceSelected={handlePlaceSelected}
+            label="Location"
+            fullWidth
+            variant="outlined"
+            inputRef={materialRef}
           />
         </form>
 

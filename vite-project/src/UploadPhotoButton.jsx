@@ -1,4 +1,4 @@
-import "./StartButton.css";
+import "./UploadPhotoButton.css";
 import RemovePhotoButton from "./RemovePhotoButton";
 import photoIcon from "./assets/upload.png"
 

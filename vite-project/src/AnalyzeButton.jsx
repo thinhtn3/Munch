@@ -78,14 +78,7 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
   };
 
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div>
       <button id="analyzeButton" type="button" onClick={validation}>
         <img src={searchIcon} alt="search icon" id="searchIcon" />
       </button>
