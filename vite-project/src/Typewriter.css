@@ -33,7 +33,7 @@
   font-weight: 600;
   font-size: 5em;
   margin-bottom: 0;
-  color: #ff9f1c
+  color: #ff9f1c;
 }
 #headingContainer p {
   font-size: 1.5em;
@@ -86,11 +86,20 @@
   }
 }
 @media screen and (max-width:460px) {
+  #headingContainer {
+    display: flex;
+    align-items: flex-start;
+  }
+
   #headingContainer h2 {
-    font-size: 3em;
+    color: black;
+    font-size: 3.5em;
+    font-weight: 600;
   }
   #headingContainer h3 {
-    font-size: 2em;
+    color: black;
+    font-size: 2.5em;
+    font-weight: 300;
   }
   #headingContainer p {
     font-size: 1.2em;
@@ -99,6 +108,10 @@
     width: 100vw;
   }
   .highlight {
-    color: #FF9F1C;
+    color: black;
+  }
+  .Text {
+    align-items: flex-end;
+    padding: 1em 6em;
   }
 }

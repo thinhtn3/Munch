@@ -1,6 +1,7 @@
 #home {
   margin: 0;
   padding: 0;
+  background-color: #fdfdfd;
 }
 .home-column {
   display: flex;
@@ -56,4 +57,15 @@
 
 .card {
   padding: 2em;
+}
+
+
+@media screen and (max-width:500px) {
+  .home-column {
+    height: 70vh;
+  }
+
+  #backdropPhoto{ 
+    background: none;
+  }
 }

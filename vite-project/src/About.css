@@ -1,5 +1,5 @@
 #about {
-  background-color: #f1f1f1;
+  background-color: #fdfdfd;
   margin: 0px;
   padding: 2em 2em;
 }
@@ -35,5 +35,12 @@
   }
   #about .aboutSection {
     margin: 3em 0em;
+  }
+}
+
+
+@media screen and (max-width:500px) {
+  #about {
+    display: none;
   }
 }

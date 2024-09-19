@@ -1,6 +1,5 @@
 .logo-row {
   display: flex;
-  font-size: 7px;
   justify-content: space-around;
   position: sticky;
   top: 0;
@@ -8,16 +7,13 @@
 }
 /*  */
 .logo-row #logo {
-  min-width: 50px;
-  min-height: 50px;
+  width: 150px;
+  max-height: 50px;
   align-self: center;
-  margin: 0px 8px;
-}
-
-.logo {
-  width: 5em;
+  object-fit: cover;
   cursor: pointer;
 }
+
 
 #navTitle {
     font-size: 3em;
@@ -33,5 +29,5 @@
 }
 
 .navLinks:hover {
-  color: white;
+  color: black;
 }

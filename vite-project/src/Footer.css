@@ -3,7 +3,7 @@
   display: flex;
   flex-direction: column;
   width: 100vw;
-  background-color: #F1F1F1;
+  background-color: #fdfdfd;
 }
 
 #footer #footerImageContainer {
@@ -21,18 +21,36 @@
   margin: 5em 0em;
   color: black;
 }
+#footer .footerHeading {
+  font-size: 1.5em;
+  color: black;
+  margin: 0;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 800px) {
+  #footer .footerImage { 
+    width: 150px;
+    height: 100px;
+  }
+}
 
 @media screen and (max-width:550px) {
   #footer #footerImageContainer {
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    height: 30vh;
   }
   #footer .copyright {
     margin: 1em 0em;
   }
+
+  #footer .footerImage { 
+    width: 100px;
+    height: 100px;
+  }
   #footer .footerHeading {
-    margin: 0;
+    font-weight: 500;
+    font-size: 1.3em;
   }
 }

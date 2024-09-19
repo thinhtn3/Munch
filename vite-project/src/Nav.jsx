@@ -9,7 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import munchLogo from "../assets/munchLogo.png";
+import munchLogo from "../assets/Munch-Logo-Orange.png";
 import { NavHashLink } from "react-router-hash-link";
 import "./Nav.css";
 
@@ -39,7 +39,7 @@ function Nav(props) {
                 // Ensure isActive doesn't get passed to DOM elements
                 isActive={() => false}
               >
-                {item}
+                {item.toLowerCase()}
               </NavHashLink>
             </ListItemButton>
           </ListItem>
@@ -91,12 +91,10 @@ function Nav(props) {
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
+                className="navButton"
                 key={item.toLowerCase()}
                 sx={{
                   cursor: "pointer",
-                  "&:hover": {
-                    backgroundColor: "#FF9F1C",
-                  },
                 }}
               >
                 <NavHashLink

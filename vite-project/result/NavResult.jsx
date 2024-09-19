@@ -9,7 +9,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import munchLogo from "../assets/munchLogo.png";
+import munchLogo from "../assets/Munch-Logo-Orange.png";
 import LocationFormResult from "./LocationFormResult";
 import "./NavResult.css";
 import { color } from "framer-motion";

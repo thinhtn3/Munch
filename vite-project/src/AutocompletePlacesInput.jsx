@@ -28,6 +28,8 @@ export default function AutocompletePlaces({
         sx={{
           width: { xs: 350, sm: 300, md: 300, lg: 300 },
           marginY: { xs: 1, sm: 0 },
+          marginX: 0.5,
+          backgroundColor: "#EEEEE",
           "& .MuiInputBase-root": {
             height: 50, // Set height of the entire input component
           },
@@ -57,7 +59,7 @@ export default function AutocompletePlaces({
         onChange={updateForm}
         label="Location"
         fullWidth
-        variant="outlined"
+        variant="filled"
         inputRef={materialRef}
       />
     </>

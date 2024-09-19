@@ -36,7 +36,7 @@ export default function SearchQueryInput({formData, updateForm}) {
           },
         }}
         label="Enter Food"
-        variant="outlined"
+        variant="filled"
         value={formData.category}
         placeholder="Search any cuisine, food, and drinks "
         onChange={updateForm}
