@@ -7,3 +7,23 @@
 #logo {
     cursor: pointer;
 }
+
+.navLinkResult::after {
+    content: '';
+    position: absolute;
+    height: 5px;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    background: #ff9f1c;
+    transition: width .3s;
+  }
+  
+  .navLinkResult:hover::after {
+    width:100%;
+  }
+  
+  .navLinkResult:hover {
+    color: black;
+  }
+  

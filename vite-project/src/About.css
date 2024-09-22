@@ -4,40 +4,19 @@
   padding: 2em 2em;
 }
 
-#about .about-heading {
+#about .aboutHeading {
   font-size: 2em;
   text-align: left;
   margin: 20px 0px;
-  padding: 0em 1em;
+  padding: 0em 0.5em;
   color: #ff9f1c;
 }
-#about .about-paragraph {
+#about .aboutParagraph {
   text-align: left;
-  padding: 0em 3em;
+  padding: 0em 2em;
   color: black;
-  font-size: 1.2em;
   margin: 0px 0x 20px 0px;
 }
-
-@media screen and (max-width: 420px) {
-  #about {
-    padding: 0.1em 0em;
-  }
-
-  #about .about-heading {
-    font-size: 1.8em;
-    margin: 0;
-  }
-  #about .about-paragraph {
-    font-size: 1.2em;
-    margin: 0
-    ;
-  }
-  #about .aboutSection {
-    margin: 3em 0em;
-  }
-}
-
 
 @media screen and (max-width:500px) {
   #about {

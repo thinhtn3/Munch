@@ -6,8 +6,8 @@ export default function About() {
   return (
     <section id="about">
       <section className="aboutSection">
-        <h4 className="about-heading">What is Munch?</h4>
-        <p className="about-paragraph">
+        <h4 className="aboutHeading">What is Munch?</h4>
+        <p className="aboutParagraph">
           Munch is a web application that creates a curated list of restaurants
           using Yelp's Fusion API to provide contents from local businesses.
           What makes Munch special is the ability to generate a curated list of
@@ -15,8 +15,8 @@ export default function About() {
         </p>
       </section>
       <section className="aboutSection">
-        <h4 className="about-heading">What are we trying to solve?</h4>
-        <p className="about-paragraph">
+        <h4 className="aboutHeading">What are we trying to solve?</h4>
+        <p className="aboutParagraph">
           Have you ever seen a delicious dish, but unsure of what the name of
           the dish is called? Munch solves this problem with the help of Google
           Gemini's API. If you are unsure of a dish's name, simply just upload a
@@ -26,8 +26,8 @@ export default function About() {
       </section>
 
       <section className="aboutSection">
-        <h4 className="about-heading">How we came up with the idea?</h4>
-        <p className="about-paragraph">
+        <h4 className="aboutHeading">How we came up with the idea?</h4>
+        <p className="aboutParagraph">
           We originally came up with the idea during a LAHacks 2024. Our initial
           goal was to make a consumer web application using an LLM. A problem we
           pointed out in our discussion is how people always post food on social

@@ -6,15 +6,14 @@
   background-color: #ff9f1c;
   cursor: pointer;
   width: 500px;
-  transition: 0.3s;
+  transition: 0.1s;
   border: 0px;
   height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
   color: white;
-  margin: 15px 0px;
-  position: relative;
+  margin: 25px 0px;
 }
 
 .takePhotoButton:hover {
@@ -26,12 +25,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
 
 }
 
 .displayImage img {
-  width: 165px;
+  width: 250px;
 }
 
 #photoIcon {
@@ -40,10 +38,15 @@
   filter: invert(1);
 }
 
-@media screen and (max-width:480px) {
+@media screen and (max-width:500px) {
   .takePhotoButton{
-    width: 90vw;
+    width: 350px;
     margin: 0px;
+  }
+  .displayImage img {
+    height: 150px;
+    width: 150px;
+    object-fit: contain;
   }
 }
 

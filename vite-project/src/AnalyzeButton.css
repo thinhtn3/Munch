@@ -1,19 +1,14 @@
-
-
 #analyzeButton {
-  font-family: inherit;
   background-color: #ff9f1c;
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.1s;
   border: 0px;
   height: 50px;
-  margin-bottom: 10px;
-  color: white;
-  box-sizing: border-box;
-  width: 5vw;
+  width: 60px;
+  margin-bottom: 1em;
 }
 
- #analyzeButton:hover {
+#analyzeButton:hover {
   background-color: rgb(174, 113, 2);
 }
 
@@ -32,11 +27,10 @@
     height: 45px;
   }
 }
-@media screen and (max-width: 460px) {
-  
+@media screen and (max-width: 500px) {
   #analyzeButton {
-    width: 90vw;
-    height: 6vh;
+    width: 350px;
+    height: 50px;
     margin-bottom: 2em;
   }
 }

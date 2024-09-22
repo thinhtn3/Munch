@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import BarLoader from "react-spinners/BarLoader";
 import "./AnalyzeButton.css";
 import searchIcon from "./assets/search_icon.png";
-import Alert from "@mui/material/Alert";
 
 export default function AnalyzeButton({ imgFile, geolocation, category }) {
   /*
@@ -23,6 +22,7 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
     */
 
     //Create and append data to newFormData
+    //formData is not an array nor object literal. Used to store key-value pairs
     const formData = new FormData();
     formData.append(type, data);
     formData.append("location", geolocation);
@@ -82,7 +82,7 @@ export default function AnalyzeButton({ imgFile, geolocation, category }) {
       <button id="analyzeButton" type="button" onClick={validation}>
         <img src={searchIcon} alt="search icon" id="searchIcon" />
       </button>
-      {loading && <BarLoader color="#FF9F1C" style={{ marginBottom: "1em" }} />}
+      {loading && <BarLoader color="#ff9f1c" style={{ marginBottom: "1em" }} />}
     </div>
   );
 }

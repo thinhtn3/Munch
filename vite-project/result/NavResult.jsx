@@ -85,22 +85,26 @@ function NavResult(props) {
           </IconButton>
 
           <div className="logo-row" style={{ display: "flex" }}>
-            <img src={munchLogo} className="logo" alt="Munch Logo" id="logo" onClick={() => location.href = `/#home`} />
+            <img
+              src={munchLogo}
+              className="logo"
+              alt="Munch Logo"
+              id="logo"
+              onClick={() => (location.href = `/#home`)}
+            />
           </div>
           <LocationFormResult />
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
               <Button
+                className="navLinkResult"
                 onClick={() => (location.href = `/#${item.toLowerCase()}`)}
                 key={item.toLowerCase()}
                 sx={{
                   color: "black",
                   fontWeight: "600",
                   fontSize: "1.2em",
-                  "&:hover": {
-                    backgroundColor: "#ff9f1c",
-                    color: "white",
-                  },
+                  "&:hover": {},
                 }}
               >
                 {item}

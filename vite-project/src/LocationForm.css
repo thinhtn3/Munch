@@ -20,7 +20,6 @@
     font-size: 0.9em;
   }
   #locationForm {
-    display: flex;
     width: 80vw;
   }
   #formSubmit {

@@ -23,7 +23,7 @@ export default function StartButton({
             id="libraryInput"
             accept="image/*, image/jpeg, image/png, image/heic, image/heif, image/avif"
             style={{ display: "none" }}
-            onChange={resetFile} // the moment the image changes, handleImageChange runs
+            onChange={resetFile}
           />
           <button
             type="button"
@@ -40,7 +40,7 @@ export default function StartButton({
             <RemovePhotoButton setImageFile={setImageFile} />
             <img
               src={URL.createObjectURL(imageFile)}
-              alt="Preview"
+              alt="Uploaded Image"
             />
           </div>
         ) : (

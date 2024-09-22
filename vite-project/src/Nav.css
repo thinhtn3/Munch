@@ -28,6 +28,21 @@
   cursor: pointer;
 }
 
+.navLinks::after {
+  content: '';
+  position: absolute;
+  height: 5px;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  background: #ff9f1c;
+  transition: width .3s;
+}
+
+.navLinks:hover::after {
+  width:100%;
+}
+
 .navLinks:hover {
   color: black;
 }

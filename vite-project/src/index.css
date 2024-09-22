@@ -1,17 +1,13 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "DM Sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  font-style: normal;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  /* background-color: #429671f9; */
   background-color: white;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   padding: 0px;
   margin: 0px;
   overflow-y: auto;

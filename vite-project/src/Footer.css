@@ -14,13 +14,13 @@
 #footer .footerImage {
   display: flex;
   width: 200px;
-
   object-fit: contain;
 }
 .copyright {
-  margin: 5em 0em;
+  margin: 2em 0em;
   color: black;
 }
+
 #footer .footerHeading {
   font-size: 1.5em;
   color: black;
@@ -36,6 +36,10 @@
 }
 
 @media screen and (max-width:550px) {
+  #footer {
+    padding: 1em 0em;
+  }
+
   #footer #footerImageContainer {
     flex-direction: row;
     align-items: center;

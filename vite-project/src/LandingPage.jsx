@@ -10,7 +10,7 @@ import About from "./About";
 
 export default function LandingPage() {
   return (
-    <section id="home">
+    <section id="landingPage">
       <Nav />
       <Home />
       <Features />

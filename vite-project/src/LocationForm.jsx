@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./LocationForm.css";
-import StartButton from "./UploadPhotoButton";
+import UploadPhotoButton from "./UploadPhotoButton";
 import AutocompletePlacesInput from "./AutocompletePlacesInput";
 import SearchQueryInput from "./SearchQueryInput";
 import AnalyzeButton from "./AnalyzeButton";
@@ -26,7 +26,6 @@ export default function LocationForm() {
     // Updates formData.geolocation || formData.category when typed, changes the state.
     const selectedName = e.target.name;
     const newValue = e.target.value;
-    console.log(formData);
     setFormData((current) => {
       return { ...current, [selectedName]: newValue };
     });
@@ -53,7 +52,7 @@ export default function LocationForm() {
         />
       </div>
 
-      <StartButton
+      <UploadPhotoButton
         //Pass these props to handle image change and update the state from the component
         handleImageChange={handleImageChange}
         imageFile={imageFile}

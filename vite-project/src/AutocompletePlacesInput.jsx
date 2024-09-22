@@ -1,14 +1,16 @@
 import { usePlacesWidget } from "react-google-autocomplete";
-import { SliderMark, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import "./AutocompletePlacesInput.css";
+import React, { useState } from "react";
 
 export default function AutocompletePlaces({
   formData,
   setFormData,
   updateForm,
 }) {
+  const [empty, setEmpty] = useState(true);
+
   const handlePlaceSelected = (place) => {
-    console.log(place);
     // Update formData.geolocation when a place is selected
     setFormData((current) => {
       return { ...current, geolocation: place.formatted_address };
@@ -20,10 +22,21 @@ export default function AutocompletePlaces({
     onPlaceSelected: handlePlaceSelected,
   });
 
+  const formValidate = (textfield) => {
+    textfield ? setEmpty(false) : setEmpty(true);
+  };
+
+  const onChangeAndValidate = (e) => {
+    updateForm(e);
+    formValidate(e.target.value);
+  };
+
   return (
     <>
       <TextField
         name="geolocation"
+        error={empty}
+        helperText={empty && "Location can not be empty!"}
         id="autoCompleteForm"
         sx={{
           width: { xs: 350, sm: 300, md: 300, lg: 300 },
@@ -39,26 +52,10 @@ export default function AutocompletePlaces({
           "& label.Mui-focused": {
             color: "#ff9f1c",
           },
-          "& .MuiOutlinedInput-root": {
-            color: "#000",
-          },
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "grey",
-            borderWidth: "1px",
-          },
-          "& .MuiOutlinedInput-root": {
-            "&:hover fieldset": {
-              borderColor: "#ff9f1c",
-            },
-            "&.Mui-focused fieldset": {
-              borderColor: "#ff9f1c",
-            },
-          },
         }}
         value={formData.geolocation}
-        onChange={updateForm}
+        onChange={onChangeAndValidate}
         label="Location"
-        fullWidth
         variant="filled"
         inputRef={materialRef}
       />
