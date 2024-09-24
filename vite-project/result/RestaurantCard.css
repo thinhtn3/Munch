@@ -104,7 +104,7 @@ p {
 /*[DESKTOP CSS] */
 @media screen and (min-width: 810px) {
   .card {
-    height: 250px;
+    height: 320px;
     opacity: 0; /* Start with the card invisible */
     transition: opacity 0.5s ease-out; /* Smooth transition for the opacity */
     will-change: opacity; /* Optimize the opacity property for animations */
@@ -147,7 +147,7 @@ p {
   }
   .imageContainer {
     width: 500px; /* Adjust to your desired width */
-    height: 250px; /* Adjust to your desired height */
+    height: 310px; /* Adjust to your desired height */
   }
   .textColumn {
     padding: 0em 1.5em;

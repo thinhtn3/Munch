@@ -38,6 +38,7 @@ export default function AutocompletePlaces({
         error={empty}
         helperText={empty && "Location can not be empty!"}
         id="autoCompleteForm"
+        color="success"
         sx={{
           width: { xs: 350, sm: 300, md: 300, lg: 300 },
           marginY: { xs: 1, sm: 0 },

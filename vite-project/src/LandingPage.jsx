@@ -7,6 +7,7 @@ import Home from "./Home";
 import Features from "./Features";
 import Footer from "./Footer";
 import About from "./About";
+import ContactForm from "./ContactForm";
 
 export default function LandingPage() {
   return (
@@ -15,7 +16,9 @@ export default function LandingPage() {
       <Home />
       <Features />
       <About />
+      <ContactForm />
       <Footer />
+
       <img
         src={munchOrangeHeader}
         alt="Munch Header"

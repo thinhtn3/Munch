@@ -4,6 +4,7 @@
   flex-direction: column;
   width: 100vw;
   background-color: #fdfdfd;
+  padding: 2em 0em;
 }
 
 #footer #footerImageContainer {

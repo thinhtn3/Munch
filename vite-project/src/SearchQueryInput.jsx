@@ -1,12 +1,11 @@
 import { TextField } from "@mui/material";
 
-export default function SearchQueryInput({formData, updateForm}) {
-
-  
+export default function SearchQueryInput({ formData, updateForm }) {
   return (
     <>
       <TextField
         name="category"
+        color="success"
         sx={{
           width: { xs: 350, sm: 300, md: 300, lg: 300 },
           marginY: { xs: 1, sm: 0 },
