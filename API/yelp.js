@@ -1,16 +1,36 @@
 const axios = require("axios");
 
+const matchDay = (info) => {
+  let currentDay = new Date().getDay();
+  if (info?.day === currentDay) {
+    return true;
+  }
+  return false;
+};
+
 const businessMap = (dataQuery, resp) => {
   /*
   Maps through results of get Request and returning a new array in businesses.restaurant
   */
-
   let businesses = { foodData: dataQuery, restaurant: [] };
   businesses.restaurant = resp.data.businesses.map((business) => {
+    //this is chat's code
+    const todayHours = business.business_hours[0]?.open?.find(matchDay);//optional chaining
+    const openToday = business.business_hours[0]?.is_open_now ?? false; //nullish coalescing
+    const openHour = todayHours ? parseInt(todayHours.start) : "N/A";
+
+    console.log(openHour)
+    const closeHour = todayHours ? parseInt(todayHours.end) : "N/A";
+    //
+
     return {
       food_name: `${dataQuery[0].toUpperCase()}${dataQuery.slice(1)}`,
       id: business.id,
       name: business.name,
+      price: business.price,
+      open_hour: openHour,
+      close_hour: closeHour,
+      is_open: openToday,
       address1: business.location.address1,
       city: business.location.city,
       state: business.location.state,
@@ -77,7 +97,6 @@ const yelpByQuery = async (query, location) => {
       &sort_by=best_match`,
     config
   );
-
   return businessMap(query, resp);
 };
 

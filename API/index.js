@@ -47,6 +47,7 @@ const yelpSearch = async (res, func) => {
     yelpResult = await func;
     yelpResult && res.status(200).end(); // check if there is yelpResults
   } catch (e) {
+    console.log(e)
     res
       .status(e.response.status)
       .send(

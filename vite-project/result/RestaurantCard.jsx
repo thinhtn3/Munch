@@ -132,7 +132,7 @@ export default function RestaurantCard({
                       CURRENTLY OPEN
                     </p>
                     <p style={{ marginLeft: "10px" }}>
-                      {open_hour !== "N/A"
+                      {open_hour !== "N/A" || close_hour !== "N/A"
                         ? `${formatOpenHour(open_hour)} - ${formatCloseHour(
                             close_hour
                           )}`
@@ -143,7 +143,7 @@ export default function RestaurantCard({
                   <div style={{ display: "flex" }}>
                     <p style={{ color: "red", fontWeight: "800" }}>CLOSED</p>
                     <p style={{ marginLeft: "10px" }}>
-                      {open_hour !== "N/A"
+                      {open_hour !== "N/A" || close_hour !== "N/A"
                         ? `${formatOpenHour(open_hour)} - ${formatCloseHour(
                             close_hour
                           )}`
