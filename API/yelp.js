@@ -15,11 +15,11 @@ const businessMap = (dataQuery, resp) => {
   let businesses = { foodData: dataQuery, restaurant: [] };
   businesses.restaurant = resp.data.businesses.map((business) => {
     //this is chat's code
-    const todayHours = business.business_hours[0]?.open?.find(matchDay);//optional chaining
+    const todayHours = business.business_hours[0]?.open?.find(matchDay); //optional chaining
     const openToday = business.business_hours[0]?.is_open_now ?? false; //nullish coalescing
     const openHour = todayHours ? parseInt(todayHours.start) : "N/A";
 
-    console.log(openHour)
+    console.log(openHour);
     const closeHour = todayHours ? parseInt(todayHours.end) : "N/A";
     //
 
@@ -78,6 +78,7 @@ const yelpByPhoto = async (jsonGoogle, location) => {
 };
 
 const yelpByQuery = async (query, location) => {
+  console.log(new Date().getDay());
   /**
     Takes in food query (string) and location query
     Make get request to YelpAPI using food query
